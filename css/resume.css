@@ -57,7 +57,7 @@ a{
 }
 .banner{
     height: 500px;
-    background-image: url(/img/lostinmind.jpg);
+    background-image: url(../img/lostinmind.jpg);
     background-position: center;
     background-size: cover;
 }
