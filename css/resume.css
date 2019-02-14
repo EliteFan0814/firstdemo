@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.clearfix:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+a{
+    text-decoration: none;
+}
+.topBar{
+    /* border: 1px solid red; */
+    position: fixed;
+    width: 100%;
+}
+.topBar .topBarInner{
+    padding: 15px 10px;
+}
+.topBar .logo{
+    float: left;
+}
+.topBar .logo span{
+    font-size: 24px;
+    font-family: "Arial Black";
+    color: #9a9da2;
+    font-weight: bold;
+}
+.topBar .logo .rs{
+    text-transform: uppercase;
+    color: #e8676b;
+}
+.topBar nav{
+    float: right;
+    margin-right: 20px;
+}
+
+.topBar ul{
+    list-style: none;
+}
+.topBar ul>li{
+    float: left;
+    padding: 12px 15px 0;
+    
+}
+.topBar ul>li>a{
+    display: block;
+    font-size: 12px;
+    color: #C2C4C7;
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 3px solid transparent;
+}
+.topBar ul>li>a:hover{
+    border-bottom: 3px solid red;
+}
+.banner{
+    height: 500px;
+    background-image: url(/img/lostinmind.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.banner>.cover{
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
