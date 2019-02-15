@@ -1,76 +1,89 @@
-body{
-    background-color:#ddd;
-  }
-  @keyframes spin{
+body {
+    background-color: #ddd;
+}
+
+@keyframes spin {
     from {
-      transform:rotate(0deg); 
+        transform: rotate(0deg);
     }
-  
     to {
-      transform:rotate(360deg); 
+        transform: rotate(360deg);
     }
-  }
-  .yinyang{
-    width:200px;
-    height:200px;
+}
+
+.yinyang {
+    width: 200px;
+    height: 200px;
     /* border:1px solid red; */
-    border-radius:50%;
-    position:relative;
+    border-radius: 50%;
+    position: relative;
     animation-name: spin;
     animation-duration: 2s;
     animation-timing-function: linear;
-    animation-iteration-count:infinite;
-    margin:20px auto;
-  }
-  .top{
-    width:100%;
-    height:50%;
-    background-color:#fff;;
-    border-radius:50% 50% 0 0/100% 100% 0 0
+    animation-iteration-count: infinite;
+    margin: 20px auto;
+}
+
+.top {
+    width: 100%;
+    height: 50%;
+    background-color: #fff;
+    ;
+    border-radius: 50% 50% 0 0/100% 100% 0 0
     /* border-radius:50px 50px 0 0 */
-  }
-  .botton{
-    width:100%;
-    height:50%;
-    background-color:#000;
-    border-radius:0 0 50% 50%/0 0 100% 100% 
-  }
-  .one{
-    width:50%;
-    height:50%;
-    background-color:#000;
-    border-radius:50%;
-    position:absolute;
-    top:25%;
-  }
-  .one-inner{
-    width:30%;
-    height:30%;
-    background-color:#fff;
-    border-radius:50%;
-    position:absolute;
-    top:35%;
-    left:35%;
-  }
-  .two{
-    width:50%;
-    height:50%;
-    background-color:#fff;
-    border-radius:50%;
-    position:absolute;
-    top:25%;
-    left:50%;
-  }
-  .two-inner{
-    width:30%;
-    height:30%;
-    background-color:#000;
-    border-radius:50%;
-    position:absolute;
-    top:35%;
-    left:35%;
-  }
-  p{
-      text-align: center;
-      font-weight: bolder;
-  }
+}
+
+.botton {
+    width: 100%;
+    height: 50%;
+    background-color: #000;
+    border-radius: 0 0 50% 50%/0 0 100% 100%
+}
+
+.one {
+    width: 50%;
+    height: 50%;
+    background-color: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+}
+
+.one-inner {
+    width: 30%;
+    height: 30%;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+}
+
+.two {
+    width: 50%;
+    height: 50%;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+}
+
+.two-inner {
+    width: 30%;
+    height: 30%;
+    background-color: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+}
+
+p {
+    text-align: center;
+    font-weight: bolder;
+}
+
+pre {
+    margin-left: 30%;
+}

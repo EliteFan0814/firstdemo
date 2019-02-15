@@ -11,6 +11,60 @@
   <div class="taiji">
   </div>
   <p>伪元素实现太极图</p>
+    <pre>
+      /*css如下所示*/
+      
+      @keyframes spin {
+          from {
+              transform: rotate(0deg);
+          }
+          to {
+              transform: rotate(360deg);
+          }
+      }
+      
+      .taiji {
+          width: 200px;
+          height: 200px;
+          /* border:1px solid red; */
+          background-color: green;
+          border-radius: 50%;
+          background: linear-gradient(to bottom, #ffffff 0%, #ffffff 50%, #000000 51%, #000000 100%);
+          position: relative;
+          margin: 10px auto;
+          animation-name: spin;
+          animation-duration: 2s;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+      }
+      
+      .taiji::before {
+          content: "";
+          display: block;
+          width: 20px;
+          height: 20px;
+          border: 1px solid red;
+          border-radius: 50%;
+          position: absolute;
+          top: 25%;
+          background-color: #fff;
+          border: 40px solid #000;
+      }
+      
+      .taiji::after {
+          content: "";
+          display: block;
+          width: 20px;
+          height: 20px;
+          border: 1px solid red;
+          border-radius: 50%;
+          position: absolute;
+          top: 25%;
+          left: 50%;
+          background-color: #000;
+          border: 40px solid #fff;
+      }
+    </pre>
 </body>
 
 </html>
