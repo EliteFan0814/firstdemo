@@ -65,3 +65,92 @@ a{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
 }
+/* second modified */
+.myCard{
+    /* border: 10px solid #2dbadd; */
+    width: 930px;
+    margin: 0 auto;
+    margin-top: -360px;
+    padding: 57px 0 0;
+    background-color: #fff;
+}
+.profileList{
+    /* border: 1px solid red; */
+    margin: 0px 50px 15px;
+}
+.profileList .myPortrait{
+    float: left;
+    margin-right: 32px;
+}
+.profileList .myProfile{
+    float: left;
+    width: 400px;
+    margin-left: 32px;
+}
+.profileList .myProfile .hello{
+    display: inline-block;
+    /* border: 10px solid #20ca11; */
+    padding: 7px 12px;
+    background-color: #e8676b;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 25px;
+}
+.profileList .myProfile .triangle{
+    display: inline-block;
+    border: 10px solid transparent;
+    border-top:0px ;
+    border-left-color: #e8676b;
+    position: absolute;
+    top: 100%;
+    left: 10%;
+}
+.profileList .myProfile h1{
+    margin-bottom: 5px;
+}
+.profileList .myProfile h2{
+    font-size: 16px;
+    font-weight: normal;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #dedede;
+    margin-bottom: 25px;
+}
+.profileList .myProfile dl{
+
+}
+.profileList .myProfile dl>dt,
+.profileList .myProfile dl>dd{
+    float: left;
+    padding: 5px 0;
+    font-size: 16px;
+    line-height: 20px;
+}
+.profileList .myProfile dl>dt{
+    width: 20%;
+    color: #333333;
+    font-weight: 700;
+}
+.profileList .myProfile dl>dd{
+    width: 80%;
+    color: #9da0a7;
+}
+.myCard footer{
+    /* border: 1px solid red; */
+    background-color: #e8676b;
+    text-align: center;
+    padding: 15px 0;
+}
+.myCard footer a{
+    display: inline-block;
+    /* border: 1px solid green; */
+    padding: 12px;
+    border-radius: 50%;
+    color: #fff;
+}
+.myCard footer a:hover{
+    background-color: rgba(0, 0, 0, 0.1)
+}
