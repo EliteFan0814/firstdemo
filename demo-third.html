@@ -126,26 +126,28 @@
         </ul>
     </section>
     <section class="portfolio">
-            <h2>作 品 集</h2>
-            <div class="slideBar">
-                <ul class="clearfix">
-                    <li id="bar1" class="slides">所 有</li>
-                    <li id="bar2" class="slides">框 架 集</li>
-                    <li id="bar3" class="slides">原 生JS & CSS</li>
-                </ul>
-                <div class="bar"><div class="bar-inner bar1"></div></div>
+        <h2>作 品 集</h2>
+        <div class="slideBar">
+            <ul class="clearfix">
+                <li id="bar1" class="slides">所 有</li>
+                <li id="bar2" class="slides">框 架 集</li>
+                <li id="bar3" class="slides">原 生JS & CSS</li>
+            </ul>
+            <div class="bar">
+                <div class="bar-inner bar1"></div>
             </div>
-            <div class="album">
-                <div class="left"><img src="./img/left.jpg" alt=""></div>
-                <div class="small"><img src="./img/topRight.jpg" alt=""></div>
-                <div class="small"><img src="./img/bottomRight.jpg" alt=""></div>
-            </div>
+        </div>
+        <div class="album">
+            <div class="left"><img src="./img/left.jpg" alt=""></div>
+            <div class="small"><img src="./img/topRight.jpg" alt=""></div>
+            <div class="small"><img src="./img/bottomRight.jpg" alt=""></div>
+        </div>
     </section>
     <script>
         var slides = document.getElementsByClassName("slides");
         var barInner = document.getElementsByClassName("bar-inner")[0];
-        for(i = 0;i < slides.length;i++){
-            slides[i].onclick=function(){
+        for (i = 0; i < slides.length; i++) {
+            slides[i].onclick = function () {
                 var slideId = this.id;
                 barInner.className = "bar-inner " + slideId;
             }
