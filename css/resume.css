@@ -1,50 +1,64 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-.clearfix:after{
+
+body {
+    height: 1000px;
+    background-color: #EFEFEF;
+}
+
+.clearfix:after {
     content: "";
     display: block;
     clear: both;
 }
-a{
+
+a {
     text-decoration: none;
 }
-.topBar{
+
+.topBar {
     /* border: 1px solid red; */
     position: fixed;
     width: 100%;
 }
-.topBar .topBarInner{
+
+.topBar .topBarInner {
     padding: 15px 10px;
 }
-.topBar .logo{
+
+.topBar .logo {
     float: left;
 }
-.topBar .logo span{
+
+.topBar .logo span {
     font-size: 24px;
     font-family: "Arial Black";
     color: #9a9da2;
     font-weight: bold;
 }
-.topBar .logo .rs{
+
+.topBar .logo .rs {
     text-transform: uppercase;
     color: #e8676b;
 }
-.topBar nav{
+
+.topBar nav {
     float: right;
     margin-right: 20px;
 }
 
-.topBar ul{
+.topBar ul {
     list-style: none;
 }
-.topBar ul>li{
+
+.topBar ul>li {
     float: left;
     padding: 12px 15px 0;
-    
 }
-.topBar ul>li>a{
+
+.topBar ul>li>a {
     display: block;
     font-size: 12px;
     color: #C2C4C7;
@@ -52,21 +66,26 @@ a{
     padding-bottom: 5px;
     border-bottom: 3px solid transparent;
 }
-.topBar ul>li>a:hover{
+
+.topBar ul>li>a:hover {
     border-bottom: 3px solid red;
 }
-.banner{
+
+.banner {
     height: 500px;
     background-image: url(../img/lostinmind.jpg);
     background-position: center;
     background-size: cover;
 }
-.banner>.cover{
+
+.banner>.cover {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
 /* second modified */
-.myCard{
+
+.myCard {
     /* border: 10px solid #2dbadd; */
     width: 930px;
     margin: 0 auto;
@@ -74,20 +93,24 @@ a{
     padding: 57px 0 0;
     background-color: #fff;
 }
-.profileList{
+
+.profileList {
     /* border: 1px solid red; */
     margin: 0px 50px 15px;
 }
-.profileList .myPortrait{
+
+.profileList .myPortrait {
     float: left;
     margin-right: 32px;
 }
-.profileList .myProfile{
+
+.profileList .myProfile {
     float: left;
     width: 400px;
     margin-left: 32px;
 }
-.profileList .myProfile .hello{
+
+.profileList .myProfile .hello {
     display: inline-block;
     /* border: 10px solid #20ca11; */
     padding: 7px 12px;
@@ -100,57 +123,212 @@ a{
     position: relative;
     margin-bottom: 25px;
 }
-.profileList .myProfile .triangle{
+
+.profileList .myProfile .triangle {
     display: inline-block;
     border: 10px solid transparent;
-    border-top:0px ;
+    border-top: 0px;
     border-left-color: #e8676b;
     position: absolute;
     top: 100%;
     left: 10%;
 }
-.profileList .myProfile h1{
+
+.profileList .myProfile h1 {
     margin-bottom: 5px;
 }
-.profileList .myProfile h2{
+
+.profileList .myProfile h2 {
     font-size: 16px;
     font-weight: normal;
     padding-bottom: 25px;
     border-bottom: 1px solid #dedede;
     margin-bottom: 25px;
 }
-.profileList .myProfile dl{
 
-}
 .profileList .myProfile dl>dt,
-.profileList .myProfile dl>dd{
+.profileList .myProfile dl>dd {
     float: left;
     padding: 5px 0;
     font-size: 16px;
     line-height: 20px;
 }
-.profileList .myProfile dl>dt{
+
+.profileList .myProfile dl>dt {
     width: 20%;
     color: #333333;
     font-weight: 700;
 }
-.profileList .myProfile dl>dd{
+
+.profileList .myProfile dl>dd {
     width: 80%;
     color: #9da0a7;
 }
-.myCard footer{
+
+.myCard {
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.myCard footer {
     /* border: 1px solid red; */
     background-color: #e8676b;
     text-align: center;
     padding: 15px 0;
 }
-.myCard footer a{
+
+.myCard footer a {
     display: inline-block;
     /* border: 1px solid green; */
     padding: 12px;
     border-radius: 50%;
     color: #fff;
+    transition: background-color 0.3s;
 }
-.myCard footer a:hover{
+
+.myCard footer a:hover {
     background-color: rgba(0, 0, 0, 0.1)
+}
+
+.download,
+.selfText {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.download a {
+    display: inline-block;
+    color: #3d4451;
+    font-weight: 700;
+    padding: 21px 55px;
+    border: 1px solid #cbcdcf;
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+.download a:hover {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.selfText {
+    font-size: 20px;
+    line-height: 1.4;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+section.skills,
+section.portfolio {
+    width: 930px;
+    margin: 30px auto;
+}
+
+section.skills h2,
+section.portfolio h2 {
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #3D4451;
+}
+
+section.skills h3 {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.1;
+    padding-bottom: 5px;
+    color: #484F5B;
+}
+
+section.skills ul {
+    list-style: none;
+    padding: 40px 50px 0;
+    background-color: #fff;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+
+section.skills ul>li {
+    float: left;
+    width: 47%;
+    margin-bottom: 40px;
+}
+
+section.skills ul>li:nth-child(odd) {
+    float: right;
+}
+
+section.skills ul>li .progressBar {
+    height: 5px;
+    background-color: #FBE0E1;
+}
+
+section.skills ul>li .progress {
+    height: 100%;
+    width: 70%;
+    background-color: #E8676B;
+}
+
+section.portfolio {
+    text-align: center;
+}
+
+section.portfolio>.slideBar {
+    display: inline-block;
+}
+
+section.portfolio>.slideBar ul {
+    display: inline-block;
+    vertical-align: top;
+    list-style-type: none;
+}
+
+section.portfolio>.slideBar ul li {
+    float: left;
+    font-weight: bold;
+    margin-right: 40px;
+}
+
+section.portfolio>.slideBar ul li:last-child {
+    margin-right: 0px;
+}
+
+section.portfolio>.slideBar ul li:hover {
+    cursor: pointer;
+}
+
+section.portfolio>.slideBar .bar {
+    height: 5px;
+    border-radius: 3px;
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+section.portfolio>.slideBar .bar>.bar-inner {
+    height: 100%;
+    background-color: #E8676B;
+    border-radius: 3px;
+    transition: margin-left 0.5s, width 0.7s;
+}
+
+.bar1 {
+    margin-left: 0px;
+    width: 36px;
+}
+
+.bar2 {
+    margin-left: 75px;
+    width: 60px;
+}
+
+.bar3 {
+    margin-left: 173px;
+    width: 108px;
+}
+section.portfolio>.album{
+    margin: 30px 0;
+}
+section.portfolio>.album .left{
+    float: left;
+}
+section.portfolio>.album .small:nth-child(2){
+    margin-bottom: 16px;
 }

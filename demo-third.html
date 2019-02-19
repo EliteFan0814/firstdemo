@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>范培超</title>
+    <link rel="stylesheet" href="./css/resume.css">
+    <script src="//at.alicdn.com/t/font_1044134_xnjxmgcb0td.js"></script>
+    <style type="text/css">
+        .icon {
+            width: 2em;
+            height: 2em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topBar">
+        <div class="topBarInner clearfix">
+            <div class="logo">
+                <span class="rs">Rs</span><span>card</span>
+            </div>
+            <nav>
+                <ul class="clearfix">
+                    <li><a href="">关于</a></li>
+                    <li><a href="">技能</a></li>
+                    <li><a href="">作品</a></li>
+                    <li><a href="">博客</a></li>
+                    <li><a href="">日历</a></li>
+                    <li><a href="">联系方式</a></li>
+                    <li><a href="">其他</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+    <div class="banner">
+        <div class="cover"></div>
+    </div>
+
+    <main class="myCard clearfix">
+        <div class="profileList clearfix">
+            <div class="myPortrait">
+                <img src="./img/face.jpg" alt="">
+            </div>
+            <div class="myProfile">
+                <span class="hello">hello<span class="triangle"></span></span>
+                <h1>范 培 超</h1>
+                <h2>前端开发工程师</h2>
+                <dl>
+                    <dt>年龄：</dt>
+                    <dd>25</dd>
+                    <dt>城市：</dt>
+                    <dd>郑州</dd>
+                    <dt>邮箱：</dt>
+                    <dd>fan552426811@outlook.com</dd>
+                    <dt>手机：</dt>
+                    <dd>15093166666</dd>
+                </dl>
+            </div>
+        </div>
+        <footer>
+            <a href="https://github.com/EliteFan0814">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-GitHub"></use>
+                </svg>
+            </a>
+            <a href="https://twitter.com/elitesuperfan">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-tuitetwitter43"></use>
+                </svg>
+            </a>
+            <a href="https://www.zhihu.com/people/fan-pei-chao/">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-zhihu"></use>
+                </svg>
+            </a>
+        </footer>
+    </main>
+    <div class="download"><a href="">下载 PDF 简历</a></div>
+    <p class="selfText">范培超, 前端开发工程师<br>技能：HTML, CSS, JS, jQuery, Node.js 开发。</p>
+    <section class="skills">
+        <h2>技 能</h2>
+        <ul class="clearfix">
+            <li>
+                <h3>HTML 5 & CSS 3</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>jQuery</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>Vue</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>React
+                </h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>HTTP</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="portfolio">
+            <h2>作 品 集</h2>
+            <div class="slideBar">
+                <ul class="clearfix">
+                    <li id="bar1" class="slides">所 有</li>
+                    <li id="bar2" class="slides">框 架 集</li>
+                    <li id="bar3" class="slides">原 生JS & CSS</li>
+                </ul>
+                <div class="bar"><div class="bar-inner bar1"></div></div>
+            </div>
+            <div class="album">
+                <div class="left"><img src="./img/left.jpg" alt=""></div>
+                <div class="small"><img src="./img/topRight.jpg" alt=""></div>
+                <div class="small"><img src="./img/bottomRight.jpg" alt=""></div>
+            </div>
+    </section>
+    <script>
+        var slides = document.getElementsByClassName("slides");
+        var barInner = document.getElementsByClassName("bar-inner")[0];
+        for(i = 0;i < slides.length;i++){
+            slides[i].onclick=function(){
+                var slideId = this.id;
+                barInner.className = "bar-inner " + slideId;
+            }
+        }
+    </script>
+</body>
+
+</html>
