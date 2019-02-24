@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: red url(./lostinmind.jpg) center center/cover no-repeat;
+    height: 100vh;
+}
+
+main {
+    border: 1px solid red;
+    /* text-align: center; */
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a {
+    text-decoration: none;
+}
+
+kbd {
+    color: #fff;
+    /* border: 1px solid red; */
+    text-transform: uppercase;
+    height: 70px;
+    width: 70px;
+    margin-right: 12px;
+    border-radius: 8px;
+    font-size: 24px;
+    line-height: 24px;
+    font-family: keyboard, "Arial Rounded", Helvetica, Arial, sans-serif;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    position: relative;
+    background-color: #000;
+}
+kbd>span{
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+kbd>img{
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+}
+kbd:hover>button {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.wrapper {
+    border: 1px solid red;
+    display: inline-block;
+    padding: 20px 20px 8px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+.wrapper>div {
+    margin-bottom: 12px;
+    display: block;
+}
+.wrapper>div:nth-child(2){
+    border: 1px solid red;
+    margin-left: 25px;
+}
+.wrapper>div:nth-child(3){
+    border: 1px solid red;
+    margin-left: 70px;
+}
+button {
+    display: none;
+    font-size: 12px;
+    border: 0;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
