@@ -4,7 +4,7 @@
 }
 
 body {
-    background: rgba(206, 204, 204, 0.562) url(./img/lostinmind.jpg) center center/cover no-repeat;
+    background: rgba(206, 204, 204, 0.562) url(../img/lostinmind.jpg) center center/cover no-repeat;
     height: 100vh;
 }
 
