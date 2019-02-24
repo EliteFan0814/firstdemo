@@ -2,19 +2,19 @@
     margin: 0;
     padding: 0;
 }
-body{
-    background: red url(./img/lostinmind.jpg) center center/cover no-repeat;
+
+body {
+    background: rgba(206, 204, 204, 0.562) url(./img/lostinmind.jpg) center center/cover no-repeat;
     height: 100vh;
 }
 
 main {
-    border: 1px solid red;
-    /* text-align: center; */
     height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 a {
     text-decoration: none;
 }
@@ -35,26 +35,28 @@ kbd {
     position: relative;
     background-color: #000;
 }
-kbd>span{
+
+kbd>span {
     display: inline-block;
     position: absolute;
     left: 5px;
     top: 5px;
 }
-kbd>img{
+
+kbd>img {
     height: 16px;
     width: 16px;
     position: absolute;
     bottom: 5px;
     left: 5px;
 }
+
 kbd:hover>button {
     display: inline-block;
     cursor: pointer;
 }
 
 .wrapper {
-    border: 1px solid red;
     display: inline-block;
     padding: 20px 20px 8px;
     background-color: rgba(255, 255, 255, 0.3);
@@ -65,14 +67,15 @@ kbd:hover>button {
     margin-bottom: 12px;
     display: block;
 }
-.wrapper>div:nth-child(2){
-    border: 1px solid red;
+
+.wrapper>div:nth-child(2) {
     margin-left: 25px;
 }
-.wrapper>div:nth-child(3){
-    border: 1px solid red;
+
+.wrapper>div:nth-child(3) {
     margin-left: 70px;
 }
+
 button {
     display: none;
     font-size: 12px;
