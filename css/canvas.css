@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 * {
@@ -10,6 +10,9 @@ body {
 #canvas {
     border: 5px;
     background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .icon {
@@ -21,7 +24,9 @@ body {
     height: 2em;
     transition: all 0.3s;
 }
-
+#pen,#eraser,#clear,#save{
+    cursor: pointer;
+}
 #pen {
     top: 10px;
     left: 10px;
@@ -31,10 +36,46 @@ body {
     top: 10px;
     left: 80px;
 }
-
+#clear{
+    top: 10px;
+    left: 150px;
+}
+#save{
+    top: 10px;
+    left: 220px;
+}
 .clicking {
     fill: red;
     transform: scale(1.2);
+}
+
+#lineSize {
+    /* border: 1px solid red; */
+    list-style: none;
+    position: fixed;
+    top: 420px;
+    left: 5px;
+}
+
+#lineSize li {
+    /* float: left; */
+    width: 50px;
+    cursor: pointer;
+    background-color: #000;
+    transition: all 0.3s;
+}
+
+#lineSize #thin {
+    height: 8px;
+    margin: 0px 0 30px;
+}
+
+#lineSize #thick {
+    height: 16px;
+}
+
+#lineSize .lineActive {
+    box-shadow: 0 0 4px 4px rgba(80, 80, 80, 0.5);
 }
 
 #color {
@@ -81,29 +122,3 @@ body {
     box-shadow: 0 0 8px 8px rgba(80, 80, 80, 0.5);
 }
 
-#lineSize {
-    /* border: 1px solid red; */
-    list-style: none;
-    position: fixed;
-    top: 25px;
-    left: 200px;
-}
-
-#lineSize li {
-    float: left;
-    width: 100px;
-    cursor: pointer;
-    background-color: #000;
-}
-
-#lineSize #thin {
-    height: 10px;
-    margin: 5px 50px 5px 0;
-}
-
-#lineSize #thick {
-    height: 20px;
-}
-#lineSize .lineActive{
-    box-shadow: 0 0 8px 8px rgba(80, 80, 80, 0.5);
-}

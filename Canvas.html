@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0 maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="//at.alicdn.com/t/font_1062390_9s8bgvhrnh9.js"></script>
+    <script src="//at.alicdn.com/t/font_1062390_8qoly14guik.js"></script>
     <link rel="stylesheet" href="./css/canvas.css">
     <title>canvas画板</title>
 </head>
@@ -18,6 +18,12 @@
     <svg id="eraser" class="icon" aria-hidden="true">
         <use xlink:href="#icon-eraser"></use>
     </svg>
+    <svg id="clear" class="icon" aria-hidden="true">
+        <use xlink:href="#icon-clear"></use>
+    </svg>
+    <svg id="save" class="icon" aria-hidden="true">
+            <use xlink:href="#icon-save"></use>
+        </svg>
     <ol id="lineSize">
         <li id="thin" class="lineActive"></li>
         <li id="thick"></li>
@@ -38,6 +44,9 @@
         var canvas = document.getElementById("canvas")
         var pen = document.getElementById("pen")
         var eraser = document.getElementById("eraser")
+        var clear = document.getElementById("clear")
+        var save = document.getElementById("save")
+
         var lineSize = document.getElementById("lineSize")
         var lineSizeList = lineSize.getElementsByTagName("li")
         var penSize = 1
@@ -64,6 +73,17 @@
             eraser.classList.add("clicking")
             pen.classList.remove("clicking")
             usingEraser = true
+        }
+        clear.onclick = function () {
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+        }
+        save.onclick = function(){
+            var url = canvas.toDataURL("image/png")
+            var download = document.createElement("a")
+            download.href = url
+            download.download = "我的图画"
+            document.body.appendChild(download)
+            download.click()
         }
 
         for (var i = 0; i < lineSizeList.length; i++) {
@@ -156,7 +176,7 @@
             }
         }
         function useEraser(ctx, x, y, size) {
-            ctx.clearRect(x - size, y - size, size, size)
+            ctx.clearRect(x - size / 2, y - size / 2, size, size)
         }
         function drawCircle(ctx, x, y, r) {
             ctx.beginPath()
