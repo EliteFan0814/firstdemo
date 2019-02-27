@@ -1,0 +1,109 @@
+body {
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#canvas {
+    border: 5px;
+    background-color: #fff;
+}
+
+.icon {
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    position: fixed;
+    width: 2em;
+    height: 2em;
+    transition: all 0.3s;
+}
+
+#pen {
+    top: 10px;
+    left: 10px;
+}
+
+#eraser {
+    top: 10px;
+    left: 80px;
+}
+
+.clicking {
+    fill: red;
+    transform: scale(1.2);
+}
+
+#color {
+    /* border: 1px solid red; */
+    list-style: none;
+    position: fixed;
+    top: 80px;
+    left: 10px;
+}
+
+#color li {
+    width: 40px;
+    height: 40px;
+    /* background-color: green; */
+    /* border: 1px solid rgba(140, 140, 140, 0.5); */
+    box-shadow: 0 0 3px 3px rgba(140, 140, 140, 0.5);
+    transition: all 0.3s;
+    margin: 20px 0;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#color #black {
+    background-color: black;
+}
+
+#color #white {
+    background-color: white;
+}
+
+#color #red {
+    background-color: red;
+}
+
+#color #yellow {
+    background-color: yellow;
+}
+
+#color #blue {
+    background-color: blue;
+}
+
+#color .colorActive {
+    box-shadow: 0 0 8px 8px rgba(80, 80, 80, 0.5);
+}
+
+#lineSize {
+    /* border: 1px solid red; */
+    list-style: none;
+    position: fixed;
+    top: 25px;
+    left: 200px;
+}
+
+#lineSize li {
+    float: left;
+    width: 100px;
+    cursor: pointer;
+    background-color: #000;
+}
+
+#lineSize #thin {
+    height: 10px;
+    margin: 5px 50px 5px 0;
+}
+
+#lineSize #thick {
+    height: 20px;
+}
+#lineSize .lineActive{
+    box-shadow: 0 0 8px 8px rgba(80, 80, 80, 0.5);
+}

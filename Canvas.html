@@ -6,92 +6,8 @@
     <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0 maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="//at.alicdn.com/t/font_1062390_9s8bgvhrnh9.js"></script>
+    <link rel="stylesheet" href="./css/canvas.css">
     <title>canvas画板</title>
-    <style>
-        body{
-            overflow: hidden;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        #canvas {
-            border: 5px;
-            background-color: #fff;
-
-        }
-
-
-        .icon {
-            vertical-align: -0.15em;
-            fill: currentColor;
-            overflow: hidden;
-            position: fixed;
-            width: 2em;
-            height: 2em;
-            transition: all 0.3s;
-        }
-
-        #pen {
-            top: 10px;
-            left: 10px;
-        }
-
-        #eraser {
-            top: 10px;
-            left: 80px;
-        }
-
-        .clicking {
-            fill: red;
-            transform: scale(1.2);
-        }
-
-        #color {
-            /* border: 1px solid red; */
-            list-style: none;
-            position: fixed;
-            top: 80px;
-            left: 10px;
-        }
-
-        #color li {
-            width: 40px;
-            height: 40px;
-            /* background-color: green; */
-            /* border: 1px solid rgba(140, 140, 140, 0.5); */
-            box-shadow: 0 0 3px 3px rgba(140, 140, 140, 0.5);
-            transition: all 0.3s;
-            margin: 20px 0;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        #color #black {
-            background-color: black;
-        }
-
-        #color #white {
-            background-color: white;
-        }
-
-        #color #red {
-            background-color: red;
-        }
-
-        #color #yellow {
-            background-color: yellow;
-        }
-
-        #color #blue {
-            background-color: blue;
-        }
-
-        #color .colorActive {
-            box-shadow: 0 0 8px 8px rgba(80, 80, 80, 0.5);
-        }
-    </style>
 </head>
 
 <body>
@@ -102,6 +18,10 @@
     <svg id="eraser" class="icon" aria-hidden="true">
         <use xlink:href="#icon-eraser"></use>
     </svg>
+    <ol id="lineSize">
+        <li id="thin" class="lineActive"></li>
+        <li id="thick"></li>
+    </ol>
     <ol id="color">
         <li id="black" class="colorActive"></li>
         <li id="white"></li>
@@ -118,6 +38,9 @@
         var canvas = document.getElementById("canvas")
         var pen = document.getElementById("pen")
         var eraser = document.getElementById("eraser")
+        var lineSize = document.getElementById("lineSize")
+        var lineSizeList = lineSize.getElementsByTagName("li")
+        var penSize = 1
         var color = document.getElementById("color")
         var colorList = color.getElementsByTagName("li")
         var penColor = "black"
@@ -143,6 +66,20 @@
             usingEraser = true
         }
 
+        for (var i = 0; i < lineSizeList.length; i++) {
+            lineSizeList[i].onclick = function () {
+                for (var j = 0; j < lineSizeList.length; j++) {
+                    lineSizeList[j].classList.remove("lineActive")
+                }
+                this.classList.add("lineActive")
+                if (this.id === "thin") {
+                    penSize = 1
+                } else {
+                    penSize = 5
+                }
+            }
+        }
+
         for (var i = 0; i < colorList.length; i++) {
             colorList[i].onclick = function () {
                 for (var j = 0; j < colorList.length; j++) {
@@ -159,11 +96,11 @@
                 var y = event.touches[0].clientY
                 usingPen = true
                 if (usingEraser) {
-                    ctx.clearRect(x, y, 10, 10)
+                    useEraser(ctx, x, y, 10)
                 } else {
                     lastPoint.x = x;
                     lastPoint.y = y;
-                    drawCircle(ctx, x, y, 1)
+                    drawCircle(ctx, x, y, penSize)
                 }
             }
             canvas.ontouchmove = function (event) {
@@ -172,11 +109,11 @@
 
                 if (usingPen) {
                     if (usingEraser) {
-                        ctx.clearRect(x, y, 10, 10)
+                        useEraser(ctx, x, y, 10)
                     } else {
                         var newPoint = { x: x, y: y }
-                        drawCircle(ctx, x, y, 1)
-                        drawLine(ctx, lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 2)
+                        drawCircle(ctx, x, y, penSize)
+                        drawLine(ctx, lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 2 * penSize)
                         lastPoint = newPoint
                     }
                 }
@@ -190,11 +127,11 @@
                 var y = event.clientY
                 usingPen = true
                 if (usingEraser) {
-                    ctx.clearRect(x, y, 10, 10)
+                    useEraser(ctx, x, y, 10)
                 } else {
                     lastPoint.x = x;
                     lastPoint.y = y;
-                    drawCircle(ctx, x, y, 1)
+                    drawCircle(ctx, x, y, penSize)
                 }
 
             }
@@ -204,11 +141,12 @@
 
                 if (usingPen) {
                     if (usingEraser) {
-                        ctx.clearRect(x, y, 10, 10)
+                        // ctx.clearRect(x, y, 10, 10)
+                        useEraser(ctx, x, y, 10)
                     } else {
                         var newPoint = { x: x, y: y }
-                        drawCircle(ctx, x, y, 1)
-                        drawLine(ctx, lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 2)
+                        drawCircle(ctx, x, y, penSize)
+                        drawLine(ctx, lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 2 * penSize)
                         lastPoint = newPoint
                     }
                 }
@@ -217,7 +155,9 @@
                 usingPen = false
             }
         }
-
+        function useEraser(ctx, x, y, size) {
+            ctx.clearRect(x - size, y - size, size, size)
+        }
         function drawCircle(ctx, x, y, r) {
             ctx.beginPath()
             ctx.arc(x, y, r, 0, Math.PI * 2)
