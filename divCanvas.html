@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas画板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            height: 100vh;
+            border:5px;background-color: red;
+            position: relative;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvas"></div>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var draw = false
+        document.onmousedown = function (event) {
+            draw = true
+            var x = event.clientX
+            var y = event.clientY
+            var div = document.createElement("div")
+            div.style = "width:10px;height:10px;border-radius:5px;background-color:black;position:absolute;left:" + (x-5) + "px;" + "top:" + (y-5) + "px;"
+            canvas.appendChild(div)
+        }
+        document.onmousemove = function(event){
+            if(draw){
+                var x = event.clientX
+            var y = event.clientY
+            var div = document.createElement("div")
+            div.style = "width:10px;height:10px;border-radius:5px;background-color:black;position:absolute;left:" + (x-5) + "px;" + "top:" + (y-5) + "px;"
+            canvas.appendChild(div)
+            }
+            
+        }
+        document.onmouseup = function(event){
+            draw = false
+        }
+    </script>
+</body>
+
+</html>

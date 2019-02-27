@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0 maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//at.alicdn.com/t/font_1062390_9s8bgvhrnh9.js"></script>
+    <title>canvas画板</title>
+    <style>
+        body{
+            overflow: hidden;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #canvas {
+            border: 5px;
+            background-color: #fff;
+
+        }
+
+
+        .icon {
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+            position: fixed;
+            width: 2em;
+            height: 2em;
+            transition: all 0.3s;
+        }
+
+        #pen {
+            top: 10px;
+            left: 10px;
+        }
+
+        #eraser {
+            top: 10px;
+            left: 80px;
+        }
+
+        .clicking {
+            fill: red;
+            transform: scale(1.2);
+        }
+
+        #color {
+            /* border: 1px solid red; */
+            list-style: none;
+            position: fixed;
+            top: 80px;
+            left: 10px;
+        }
+
+        #color li {
+            width: 40px;
+            height: 40px;
+            /* background-color: green; */
+            /* border: 1px solid rgba(140, 140, 140, 0.5); */
+            box-shadow: 0 0 3px 3px rgba(140, 140, 140, 0.5);
+            transition: all 0.3s;
+            margin: 20px 0;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        #color #black {
+            background-color: black;
+        }
+
+        #color #white {
+            background-color: white;
+        }
+
+        #color #red {
+            background-color: red;
+        }
+
+        #color #yellow {
+            background-color: yellow;
+        }
+
+        #color #blue {
+            background-color: blue;
+        }
+
+        #color .colorActive {
+            box-shadow: 0 0 8px 8px rgba(80, 80, 80, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <svg id="pen" class="icon clicking" aria-hidden="true">
+        <use xlink:href="#icon-pen"></use>
+    </svg>
+    <svg id="eraser" class="icon" aria-hidden="true">
+        <use xlink:href="#icon-eraser"></use>
+    </svg>
+    <ol id="color">
+        <li id="black" class="colorActive"></li>
+        <li id="white"></li>
+        <li id="red"></li>
+        <li id="yellow"></li>
+        <li id="blue"></li>
+    </ol>
+
+    <!-- <button id="pen" class="clicking">画 笔</button>
+    <button id="eraser">橡皮擦</button> -->
+    <script>
+
+
+        var canvas = document.getElementById("canvas")
+        var pen = document.getElementById("pen")
+        var eraser = document.getElementById("eraser")
+        var color = document.getElementById("color")
+        var colorList = color.getElementsByTagName("li")
+        var penColor = "black"
+
+        var ctx = canvas.getContext('2d')
+        var usingPen = false
+        var usingEraser = false
+        var lastPoint = { x: undefined, y: undefined }
+
+        setCanvasSize(canvas)
+        window.onresize = function () {
+            setCanvasSize(canvas)
+        }
+
+        pen.onclick = function () {
+            pen.classList.add("clicking")
+            eraser.classList.remove("clicking")
+            usingEraser = false
+        }
+        eraser.onclick = function () {
+            eraser.classList.add("clicking")
+            pen.classList.remove("clicking")
+            usingEraser = true
+        }
+
+        for (var i = 0; i < colorList.length; i++) {
+            colorList[i].onclick = function () {
+                for (var j = 0; j < colorList.length; j++) {
+                    colorList[j].classList.remove("colorActive")
+                }
+                this.classList.add("colorActive")
+                penColor = this.id;
+            }
+        }
+
+        if (document.body.ontouchstart !== undefined) {
+            canvas.ontouchstart = function (event) {
+                var x = event.touches[0].clientX
+                var y = event.touches[0].clientY
+                usingPen = true
+                if (usingEraser) {
+                    ctx.clearRect(x, y, 10, 10)
+                } else {
+                    lastPoint.x = x;
+                    lastPoint.y = y;
+                    drawCircle(ctx, x, y, 1)
+                }
+            }
+            canvas.ontouchmove = function (event) {
+                var x = event.touches[0].clientX
+                var y = event.touches[0].clientY
+
+                if (usingPen) {
+                    if (usingEraser) {
+                        ctx.clearRect(x, y, 10, 10)
+                    } else {
+                        var newPoint = { x: x, y: y }
+                        drawCircle(ctx, x, y, 1)
+                        drawLine(ctx, lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 2)
+                        lastPoint = newPoint
+                    }
+                }
+            }
+            canvas.ontouchend = function (event) {
+                usingPen = false
+            }
+        } else {
+            canvas.onmousedown = function (event) {
+                var x = event.clientX
+                var y = event.clientY
+                usingPen = true
+                if (usingEraser) {
+                    ctx.clearRect(x, y, 10, 10)
+                } else {
+                    lastPoint.x = x;
+                    lastPoint.y = y;
+                    drawCircle(ctx, x, y, 1)
+                }
+
+            }
+            canvas.onmousemove = function (event) {
+                var x = event.clientX
+                var y = event.clientY
+
+                if (usingPen) {
+                    if (usingEraser) {
+                        ctx.clearRect(x, y, 10, 10)
+                    } else {
+                        var newPoint = { x: x, y: y }
+                        drawCircle(ctx, x, y, 1)
+                        drawLine(ctx, lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 2)
+                        lastPoint = newPoint
+                    }
+                }
+            }
+            canvas.onmouseup = function (event) {
+                usingPen = false
+            }
+        }
+
+        function drawCircle(ctx, x, y, r) {
+            ctx.beginPath()
+            ctx.arc(x, y, r, 0, Math.PI * 2)
+            ctx.fillStyle = penColor;
+            ctx.fill()
+        }
+        function drawLine(ctx, startX, startY, endX, endY, width) {
+            ctx.beginPath()
+            ctx.moveTo(startX, startY)
+            ctx.lineWidth = width
+            ctx.lineTo(endX, endY)
+            ctx.strokeStyle = penColor
+            ctx.stroke()
+        }
+        function setCanvasSize(element) {
+            var canvasWidth = document.documentElement.clientWidth
+            var canvasHeight = document.documentElement.clientHeight
+            element.width = canvasWidth
+            element.height = canvasHeight
+        }
+    </script>
+</body>
+
+</html>
