@@ -20,13 +20,18 @@ body {
     fill: currentColor;
     overflow: hidden;
     position: fixed;
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     transition: all 0.3s;
 }
-#pen,#eraser,#clear,#save{
+
+#pen,
+#eraser,
+#clear,
+#save {
     cursor: pointer;
 }
+
 #pen {
     top: 10px;
     left: 10px;
@@ -36,14 +41,17 @@ body {
     top: 10px;
     left: 80px;
 }
-#clear{
+
+#clear {
     top: 10px;
     left: 150px;
 }
-#save{
+
+#save {
     top: 10px;
     left: 220px;
 }
+
 .clicking {
     fill: red;
     transform: scale(1.2);
@@ -53,25 +61,25 @@ body {
     /* border: 1px solid red; */
     list-style: none;
     position: fixed;
-    top: 420px;
-    left: 5px;
+    top: 270px;
+    left: 6px;
 }
 
 #lineSize li {
     /* float: left; */
-    width: 50px;
+    width: 30px;
     cursor: pointer;
     background-color: #000;
     transition: all 0.3s;
 }
 
 #lineSize #thin {
-    height: 8px;
-    margin: 0px 0 30px;
+    height: 4px;
+    margin: 0px 0 15px;
 }
 
 #lineSize #thick {
-    height: 16px;
+    height: 8px;
 }
 
 #lineSize .lineActive {
@@ -82,13 +90,13 @@ body {
     /* border: 1px solid red; */
     list-style: none;
     position: fixed;
-    top: 80px;
+    top: 40px;
     left: 10px;
 }
 
 #color li {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     /* background-color: green; */
     /* border: 1px solid rgba(140, 140, 140, 0.5); */
     box-shadow: 0 0 3px 3px rgba(140, 140, 140, 0.5);
@@ -119,6 +127,5 @@ body {
 }
 
 #color .colorActive {
-    box-shadow: 0 0 8px 8px rgba(80, 80, 80, 0.5);
+    box-shadow: 0 0 5px 5px rgba(80, 80, 80, 0.5);
 }
-

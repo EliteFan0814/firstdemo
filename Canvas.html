@@ -22,8 +22,8 @@
         <use xlink:href="#icon-clear"></use>
     </svg>
     <svg id="save" class="icon" aria-hidden="true">
-            <use xlink:href="#icon-save"></use>
-        </svg>
+        <use xlink:href="#icon-save"></use>
+    </svg>
     <ol id="lineSize">
         <li id="thin" class="lineActive"></li>
         <li id="thick"></li>
@@ -77,7 +77,7 @@
         clear.onclick = function () {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
         }
-        save.onclick = function(){
+        save.onclick = function () {
             var url = canvas.toDataURL("image/png")
             var download = document.createElement("a")
             download.href = url
