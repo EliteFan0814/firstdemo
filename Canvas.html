@@ -49,10 +49,12 @@
 
         var lineSize = document.getElementById("lineSize")
         var lineSizeList = lineSize.getElementsByTagName("li")
+
+        var penColor = "black"
         var penSize = 1
+
         var color = document.getElementById("color")
         var colorList = color.getElementsByTagName("li")
-        var penColor = "black"
 
         var ctx = canvas.getContext('2d')
         var usingPen = false
@@ -64,51 +66,9 @@
             setCanvasSize(canvas)
         }
 
-        pen.onclick = function () {
-            pen.classList.add("clicking")
-            eraser.classList.remove("clicking")
-            usingEraser = false
-        }
-        eraser.onclick = function () {
-            eraser.classList.add("clicking")
-            pen.classList.remove("clicking")
-            usingEraser = true
-        }
-        clear.onclick = function () {
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
-        }
-        save.onclick = function () {
-            var url = canvas.toDataURL("image/png")
-            var download = document.createElement("a")
-            download.href = url
-            download.download = "我的图画"
-            document.body.appendChild(download)
-            download.click()
-        }
+        clickMonitor(pen, eraser, clear, save)
 
-        for (var i = 0; i < lineSizeList.length; i++) {
-            lineSizeList[i].onclick = function () {
-                for (var j = 0; j < lineSizeList.length; j++) {
-                    lineSizeList[j].classList.remove("lineActive")
-                }
-                this.classList.add("lineActive")
-                if (this.id === "thin") {
-                    penSize = 1
-                } else {
-                    penSize = 5
-                }
-            }
-        }
-
-        for (var i = 0; i < colorList.length; i++) {
-            colorList[i].onclick = function () {
-                for (var j = 0; j < colorList.length; j++) {
-                    colorList[j].classList.remove("colorActive")
-                }
-                this.classList.add("colorActive")
-                penColor = this.id;
-            }
-        }
+        lineAndColorSize()
 
         if (document.body.ontouchstart !== undefined) {
             canvas.ontouchstart = function (event) {
@@ -175,6 +135,7 @@
                 usingPen = false
             }
         }
+        
         function useEraser(ctx, x, y, size) {
             ctx.clearRect(x - size / 2, y - size / 2, size, size)
         }
@@ -197,6 +158,53 @@
             var canvasHeight = document.documentElement.clientHeight
             element.width = canvasWidth
             element.height = canvasHeight
+        }
+        function lineAndColorSize() {
+            for (var i = 0; i < colorList.length; i++) {
+                colorList[i].onclick = function () {
+                    for (var j = 0; j < colorList.length; j++) {
+                        colorList[j].classList.remove("colorActive")
+                    }
+                    this.classList.add("colorActive")
+                    penColor = this.id;
+                }
+            }
+            for (var i = 0; i < lineSizeList.length; i++) {
+                lineSizeList[i].onclick = function () {
+                    for (var j = 0; j < lineSizeList.length; j++) {
+                        lineSizeList[j].classList.remove("lineActive")
+                    }
+                    this.classList.add("lineActive")
+                    if (this.id === "thin") {
+                        penSize = 1
+                    } else {
+                        penSize = 5
+                    }
+                }
+            }
+        }
+        function clickMonitor(pen, eraser, clear, save) {
+            pen.onclick = function () {
+                pen.classList.add("clicking")
+                eraser.classList.remove("clicking")
+                usingEraser = false
+            }
+            eraser.onclick = function () {
+                eraser.classList.add("clicking")
+                pen.classList.remove("clicking")
+                usingEraser = true
+            }
+            clear.onclick = function () {
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+            }
+            save.onclick = function () {
+                var url = canvas.toDataURL("image/png")
+                var download = document.createElement("a")
+                download.href = url
+                download.download = "我的图画"
+                document.body.appendChild(download)
+                download.click()
+            }
         }
     </script>
 </body>
