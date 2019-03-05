@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>范培超</title>
+    <link rel="stylesheet" href="./css/loading.css">
     <link rel="stylesheet" href="./css/resume.css">
     <script src="//at.alicdn.com/t/font_1044134_xnjxmgcb0td.js"></script>
     <style type="text/css">
@@ -19,6 +20,7 @@
 </head>
 
 <body>
+    <div id="loading" class="loading loadActive"></div>
     <div class="topBar">
         <div class="topBarInner clearfix">
             <div class="logo">
@@ -144,6 +146,9 @@
         </div>
     </section>
     <script>
+        var loading = document.getElementById("loading");
+        loading.classList.remove("loadActive");
+
         var slides = document.getElementsByClassName("slides");
         var barInner = document.getElementsByClassName("bar-inner")[0];
         for (i = 0; i < slides.length; i++) {
