@@ -147,7 +147,14 @@
     </section>
     <script>
         var loading = document.getElementById("loading");
-        loading.classList.remove("loadActive");
+        setTimeout(function () {
+            loading.classList.remove("loadActive");
+        }, 1500);
+
+        var topBar = document.getElementsByClassName("topBar")[0];
+        window.onscroll = function () {
+            window.scrollY > 0 ? topBar.classList.add("topBarMove") : topBar.classList.remove("topBarMove");
+        }
 
         var slides = document.getElementsByClassName("slides");
         var barInner = document.getElementsByClassName("bar-inner")[0];
