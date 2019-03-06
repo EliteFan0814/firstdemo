@@ -28,10 +28,24 @@
             </div>
             <nav>
                 <ul class="clearfix">
-                    <li><a href="">关于</a></li>
-                    <li><a href="">技能</a></li>
-                    <li><a href="">作品</a></li>
-                    <li><a href="">博客</a></li>
+                    <li><a href="#toAboutMe">关于</a></li>
+                    <li><a href="#toSkill">技能</a></li>
+                    <li class="haveList">
+                        <a href="#toProject">作品</a>
+                        <ul class="hideList">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li class="haveList">
+                        <a href="toBlog">博客</a>
+                        <ul class="hideList">
+                            <li>博客1</li>
+                            <li>博客2</li>
+                            <li>博客3</li>
+                        </ul>
+                    </li>
                     <li><a href="">日历</a></li>
                     <li><a href="">联系方式</a></li>
                     <li><a href="">其他</a></li>
@@ -49,7 +63,7 @@
             <div class="myPortrait">
                 <img src="./img/face.jpg" alt="">
             </div>
-            <div class="myProfile">
+            <div id="toAboutMe" class="myProfile">
                 <span class="hello">hello<span class="triangle"></span></span>
                 <h1>范 培 超</h1>
                 <h2>前端开发工程师</h2>
@@ -85,7 +99,7 @@
     </main>
     <div class="download"><a href="./myrscard.pdf" download="范培超的简历">下载 PDF 简历</a></div>
     <p class="selfText">范培超, 前端开发工程师<br>技能：HTML, CSS, JS, jQuery, Node.js 开发。</p>
-    <section class="skills">
+    <section id="toSkill" class="skills">
         <h2>技 能</h2>
         <ul class="clearfix">
             <li>
@@ -127,7 +141,7 @@
             </li>
         </ul>
     </section>
-    <section class="portfolio">
+    <section id="toProject" class="portfolio">
         <h2>作 品 集</h2>
         <div class="slideBar">
             <ul class="clearfix">
@@ -154,6 +168,33 @@
         var topBar = document.getElementsByClassName("topBar")[0];
         window.onscroll = function () {
             window.scrollY > 0 ? topBar.classList.add("topBarMove") : topBar.classList.remove("topBarMove");
+        }
+
+        // let haveList = document.getElementsByClassName("haveList");
+        let activeLi = document.querySelectorAll(".topBar ul>li")
+        for (let i = 0; i < activeLi.length; i++) {
+            activeLi[i].onmouseenter = function (event) {
+                // let target = this.children[1];
+                this.classList.add("active")
+            }
+            activeLi[i].onmouseleave = function (event) {
+                // let target = this.children[1];
+                this.classList.remove("active")
+            }
+        }
+
+        let toAnchor = document.querySelectorAll(".topBar ul.clearfix>li>a");
+        for(let i = 0;i < toAnchor.length;i++){
+            toAnchor[i].onclick = function(event){
+                event.preventDefault();
+                let a = event.currentTarget;
+                let hrefId = a.getAttribute("href");
+                let element = document.querySelector(hrefId); 
+                // debugger
+                let top = element.offsetTop;
+                console.log(top);
+                window.scrollTo(0,top - 60);
+            }
         }
 
         var slides = document.getElementsByClassName("slides");
