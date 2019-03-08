@@ -159,6 +159,7 @@
             <div class="small"><img src="./img/bottomRight.jpg" alt=""></div>
         </div>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.3.0/Tween.min.js"></script>
     <script>
         var loading = document.getElementById("loading");
         setTimeout(function () {
@@ -184,16 +185,44 @@
         }
 
         let toAnchor = document.querySelectorAll(".topBar ul.clearfix>li>a");
-        for(let i = 0;i < toAnchor.length;i++){
-            toAnchor[i].onclick = function(event){
+        for (let i = 0; i < toAnchor.length; i++) {
+            toAnchor[i].onclick = function (event) {
                 event.preventDefault();
                 let a = event.currentTarget;
                 let hrefId = a.getAttribute("href");
-                let element = document.querySelector(hrefId); 
+                let element = document.querySelector(hrefId);
                 // debugger
                 let top = element.offsetTop;
-                console.log(top);
-                window.scrollTo(0,top - 60);
+
+                let n = 400;
+                let duration = 1000 / n;
+                let targetop = top - 80;
+                let currentTop = window.scrollY;
+                let distance = (targetop - currentTop) / n;
+                let t = Math.abs(((targetop - currentTop) / 100) * 200) ;
+                // let i = 0;
+                // let interv1 = setInterval(function(){
+                //     if(i >= n){window.clearInterval(interv1)}
+                //     i++;
+                //     window.scrollTo(0,currentTop += distance);
+                // },duration)
+                // window.scrollTo(0,top - 60);
+
+                // Setup the animation loop.
+                function animate(time) {
+                    requestAnimationFrame(animate);
+                    TWEEN.update(time);
+                }
+                requestAnimationFrame(animate);
+
+                var coords = { y: currentTop }; // Start at (0, 0)
+                var tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
+                    .to({ y: targetop }, t) // Move to (300, 200) in 1 second.
+                    .easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
+                    .onUpdate(function () { // Called after tween.js updates 'coords'.
+                        window.scrollTo(0,coords.y);
+                    })
+                    .start(); // Start the tween immediately.
             }
         }
 
