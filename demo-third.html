@@ -39,7 +39,7 @@
                         </ul>
                     </li>
                     <li class="haveList">
-                        <a href="toBlog">博客</a>
+                        <a href="#toBlog">博客</a>
                         <ul class="hideList">
                             <li>博客1</li>
                             <li>博客2</li>
@@ -166,22 +166,29 @@
             loading.classList.remove("loadActive");
         }, 1500);
 
+
+        let currentShowList = document.querySelectorAll("[data-now]");
+        for (let i = 1; i < currentShowList.length; i++) {
+            currentShowList[i].classList.add("currentJump");
+        }
+
         var topBar = document.getElementsByClassName("topBar")[0];
         window.onscroll = function () {
             window.scrollY > 0 ? topBar.classList.add("topBarMove") : topBar.classList.remove("topBarMove");
 
-            let currentShowList = document.querySelectorAll("[data-now]");
-            let minShowIndex = 0; 
-            for(let i = 1;i < currentShowList.length;i++){
-                if(Math.abs(currentShowList[i].offsetTop - window.scrollY) < Math.abs(currentShowList[minShowIndex].offsetTop - window.scrollY)){
+            let minShowIndex = 0;
+            for (let i = 1; i < currentShowList.length; i++) {
+                if (Math.abs(currentShowList[i].offsetTop - window.scrollY) < Math.abs(currentShowList[minShowIndex].offsetTop - window.scrollY)) {
                     minShowIndex = i;
                 }
             }
+            currentShowList[minShowIndex].classList.remove("currentJump")
+
             let hrefId = currentShowList[minShowIndex].id;
-            let tarrgetA = document.querySelector("a[href=\"#" + hrefId +"\"]");
-            for(let i = 0;i < currentShowList.length;i++){
+            let tarrgetA = document.querySelector("a[href=\"#" + hrefId + "\"]");
+            for (let i = 0; i < currentShowList.length; i++) {
                 let hrefId = currentShowList[i].id;
-                let tarrgetA = document.querySelector("a[href=\"#" + hrefId +"\"]");
+                let tarrgetA = document.querySelector("a[href=\"#" + hrefId + "\"]");
                 tarrgetA.parentElement.classList.remove("currentNow");
             }
             tarrgetA.parentElement.classList.add("currentNow");
@@ -208,15 +215,16 @@
                 let a = event.currentTarget;
                 let hrefId = a.getAttribute("href");
                 let element = document.querySelector(hrefId);
+                console.log(element);
                 // debugger
                 let top = element.offsetTop;
 
                 let n = 400;
-                let duration = 1000 / n;
+                // let duration = 1000 / n;
                 let targetop = top - 80;
                 let currentTop = window.scrollY;
                 let distance = (targetop - currentTop) / n;
-                let t = Math.abs(((targetop - currentTop) / 100) * 200) ;
+                let t = Math.abs(((targetop - currentTop) / 100) * 100);
                 // let i = 0;
                 // let interv1 = setInterval(function(){
                 //     if(i >= n){window.clearInterval(interv1)}
@@ -237,7 +245,7 @@
                     .to({ y: targetop }, t) // Move to (300, 200) in 1 second.
                     .easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
                     .onUpdate(function () { // Called after tween.js updates 'coords'.
-                        window.scrollTo(0,coords.y);
+                        window.scrollTo(0, coords.y);
                     })
                     .start(); // Start the tween immediately.
             }

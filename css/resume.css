@@ -142,6 +142,13 @@ a {
 [data-now].currentShow{
     outline: 10px solid red;
 } */
+[data-now].currentJump{
+    transform: translateY(50px);
+}
+[data-now]{
+    transform: translateY(0);
+    transition: all 0.6s;
+}
 
 .myCard {
     /* border: 10px solid #2dbadd; */
@@ -317,14 +324,19 @@ section.skills ul>li:nth-child(odd) {
 section.skills ul>li .progressBar {
     height: 5px;
     background-color: #FBE0E1;
+    overflow: hidden;
 }
 
 section.skills ul>li .progress {
     height: 100%;
     width: 70%;
     background-color: #E8676B;
+    transform: translateX(0);
+    transition: all 0.8s;
 }
-
+section.skills.currentJump .progress{
+    transform: translateX(-100%);
+}
 section.portfolio {
     text-align: center;
 }
