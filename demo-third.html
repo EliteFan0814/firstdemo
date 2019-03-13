@@ -63,7 +63,7 @@
             <div class="myPortrait">
                 <img src="./img/face.jpg" alt="">
             </div>
-            <div id="toAboutMe" class="myProfile">
+            <div data-now id="toAboutMe" class="myProfile">
                 <span class="hello">hello<span class="triangle"></span></span>
                 <h1>范 培 超</h1>
                 <h2>前端开发工程师</h2>
@@ -99,7 +99,7 @@
     </main>
     <div class="download"><a href="./myrscard.pdf" download="范培超的简历">下载 PDF 简历</a></div>
     <p class="selfText">范培超, 前端开发工程师<br>技能：HTML, CSS, JS, jQuery, Node.js 开发。</p>
-    <section id="toSkill" class="skills">
+    <section data-now id="toSkill" class="skills">
         <h2>技 能</h2>
         <ul class="clearfix">
             <li>
@@ -141,7 +141,7 @@
             </li>
         </ul>
     </section>
-    <section id="toProject" class="portfolio">
+    <section data-now id="toProject" class="portfolio">
         <h2>作 品 集</h2>
         <div class="slideBar">
             <ul class="clearfix">
@@ -169,6 +169,23 @@
         var topBar = document.getElementsByClassName("topBar")[0];
         window.onscroll = function () {
             window.scrollY > 0 ? topBar.classList.add("topBarMove") : topBar.classList.remove("topBarMove");
+
+            let currentShowList = document.querySelectorAll("[data-now]");
+            let minShowIndex = 0; 
+            for(let i = 1;i < currentShowList.length;i++){
+                if(Math.abs(currentShowList[i].offsetTop - window.scrollY) < Math.abs(currentShowList[minShowIndex].offsetTop - window.scrollY)){
+                    minShowIndex = i;
+                }
+            }
+            let hrefId = currentShowList[minShowIndex].id;
+            let tarrgetA = document.querySelector("a[href=\"#" + hrefId +"\"]");
+            for(let i = 0;i < currentShowList.length;i++){
+                let hrefId = currentShowList[i].id;
+                let tarrgetA = document.querySelector("a[href=\"#" + hrefId +"\"]");
+                tarrgetA.parentElement.classList.remove("currentNow");
+            }
+            tarrgetA.parentElement.classList.add("currentNow");
+
         }
 
         // let haveList = document.getElementsByClassName("haveList");

@@ -74,7 +74,8 @@ a {
     position: relative;
 }
 
-.topBar ul>li.active>a::after {
+.topBar ul>li.active>a::after,
+.topBar ul>li.currentNow>a::after{
     /* border-bottom: 3px solid red; */
     content: "";
     display: block;
@@ -137,6 +138,10 @@ a {
 }
 
 /* second modified */
+/* 
+[data-now].currentShow{
+    outline: 10px solid red;
+} */
 
 .myCard {
     /* border: 10px solid #2dbadd; */
