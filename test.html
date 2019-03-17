@@ -1,24 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <style>
-        body{
-            height: 1000px;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #window {
+            /* border: 1px solid red; */
+            overflow: hidden;
+            width: 300px;
+        }
+
+        #images {
+            display: flex;
+            transition: transform 0.5s;
         }
     </style>
 </head>
+
 <body>
+    <div id="window">
+        <div id="images">
+            <img src="./img/banner1.png">
+            <img src="./img/banner2.png">
+            <img src="./img/banner3.png">
+        </div>
+    </div>
+
+    <button id="btn1">1</button>
+    <button id="btn2">2</button>
+    <button id="btn3">3</button>
+
     <script>
-        window.onscroll = function(){
-            var a = 5;
-            for(let i = 0;i < a;i++){
-                console.log(i)
-            }
-        }
+        $('#btn1').on('click', function () {
+            $('#images').css({
+                transform: 'translateX(0)'
+            })
+        })
+        $('#btn2').on('click', function () {
+            $('#images').css({
+                transform: 'translateX(-300px)'
+            })
+        })
+        $('#btn3').on('click', function () {
+            $('#images').css({
+                transform: 'translateX(-600px)'
+            })
+        })
     </script>
 </body>
+
 </html>
