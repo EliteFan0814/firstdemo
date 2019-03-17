@@ -23,6 +23,10 @@
             display: flex;
             transition: transform 0.5s;
         }
+
+        .red {
+            color: red;
+        }
     </style>
 </head>
 
@@ -34,27 +38,75 @@
             <img src="./img/banner3.png">
         </div>
     </div>
-
-    <button id="btn1">1</button>
-    <button id="btn2">2</button>
-    <button id="btn3">3</button>
+    <div id="btnList">
+        <button id="btn1">1</button>
+        <button id="btn2">2</button>
+        <button id="btn3">3</button>
+    </div>
 
     <script>
-        $('#btn1').on('click', function () {
-            $('#images').css({
-                transform: 'translateX(0)'
+        // 1. 如下先使用笨方法：
+        // $('#btn1').on('click', function () {
+        //     $('#images').css({
+        //         transform: 'translateX(0)'
+        //     })
+        // })
+        // $('#btn2').on('click', function () {
+        //     $('#images').css({
+        //         transform: 'translateX(-300px)'
+        //     })
+        // })
+        // $('#btn3').on('click', function () {
+        //     $('#images').css({
+        //         transform: 'translateX(-600px)'
+        //     })
+        // })
+
+        // 2. 改进版的新方法：
+        $(function () {
+            var img_num = $('#images img').length
+            var $window = $('#window')
+            var $buttonList = $('button')
+            var n = 0
+            $buttonList.click(function () {
+                $('#images').css('transform', 'translateX(' + (-300 * $(this).index()) + 'px)')
+                $(this).addClass('red')
+                    .siblings('.red').removeClass('red')
+                n = $(this).index()
             })
-        })
-        $('#btn2').on('click', function () {
-            $('#images').css({
-                transform: 'translateX(-300px)'
+
+            var img_timer = setTimer(1000)
+            // var img_timer = setInterval(function () {
+            //     highLight()
+            // }, 1000)
+
+            $window.on('mouseenter', function () {
+                window.clearInterval(img_timer)
             })
-        })
-        $('#btn3').on('click', function () {
-            $('#images').css({
-                transform: 'translateX(-600px)'
+            $window.on('mouseleave', function () {
+                img_timer = setTimer(1000)
             })
+
+            $buttonList.on('mouseenter', function () {
+                window.clearInterval(img_timer)
+            })
+            $buttonList.on('mouseleave', function () {
+                img_timer = setTimer(1000)
+            })
+
+            function highLight() {
+                $buttonList.eq(n % img_num).trigger('click').addClass('red')
+                    .siblings('.red').removeClass('red')
+                n++
+            }
+            function setTimer(duration) {
+                return setInterval(function () {
+                    highLight()
+                }, duration)
+            }
         })
+
+
     </script>
 </body>
 
