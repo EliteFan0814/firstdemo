@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.window,
+.btnList {
+    overflow: hidden;
+    width: 300px;
+    margin: 10px auto;
+}
+
+.btnList {
+    text-align: center;
+}
+
+.images {
+    /* display: flex; */
+    width: 300px;
+    height: 200px;
+    position: relative;
+    
+}
+.images img{
+    transition: transform 0.5s;
+}
+.images img:nth-child(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.images img:nth-child(2){
+    position: absolute;
+    top: 0;
+    left: 100%
+}
+.images img:nth-child(3){
+    position: absolute;
+    top: 0;
+    left: 100%
+}
+.red {
+    color: red;
+}
+.images img.right{
+    position: absolute;
+    top: 0;
+    left: 100%
+}
