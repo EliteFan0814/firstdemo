@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.window,
+.btnList {
+    overflow: hidden;
+    width: 300px;
+    margin: 10px auto;
+}
+
+.btnList {
+    text-align: center;
+}
+
+.images {
+    /* display: flex; */
+    width: 300px;
+    height: 200px;
+    position: relative;
+}
+
+.images img {
+    position: absolute;
+    top: 0;
+    transition: transform 0.5s;
+}
+
+.images img:nth-child(1) {
+    left: 0;
+}
+
+.images img:nth-child(2) {
+    left: 100%
+}
+
+.images img:nth-child(3) {
+    left: 100%
+}
+
+.red {
+    color: red;
+}
+
+.images img.right {
+    left: 100%
+}

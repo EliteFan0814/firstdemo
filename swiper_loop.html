@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无缝轮播图</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/swiperLoopBeta.css">
+</head>
+
+<body>
+    <div class="banner">
+        <div class="window">
+            <div class="images">
+                <img src="./img/slide1.png">
+                <img src="./img/slide2.png">
+                <img src="./img/slide3.png">
+                <img src="./img/slide4.png">
+                <img src="./img/slide5.png">
+            </div>
+        </div>
+        <div class="btnList">
+            <button id="btn1">1</button>
+            <button id="btn2">2</button>
+            <button id="btn3">3</button>
+            <button id="btn4">4</button>
+            <button id="btn5">5</button>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            var img_num = $('.images img').length
+            var n = 1
+            defaultPosition()
+
+            setInterval(() => {
+                $('.images img:nth-child(' + n + ')').removeClass('current').addClass('leave')
+                    .one('transitionend', (event) => {
+                        $(event.currentTarget).removeClass('leave').addClass('enter')
+                    })
+                if (n === img_num) {
+                    n = 0
+                }
+                $('.images img:nth-child(' + (n + 1) + ')').removeClass('enter').addClass('current')
+                n++
+            }, 2000)
+
+            //设置图片默认状态
+            function defaultPosition(){
+                $('.images img').eq(0).addClass('current')
+                .siblings().addClass('enter')
+            }
+        })
+
+    </script>
+</body>
+
+</html>
