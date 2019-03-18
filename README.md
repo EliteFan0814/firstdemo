@@ -10,3 +10,4 @@
 08. [原生js生成键盘](https://elitefan0814.github.io/firstdemo/kbd.html)
 09. [divCanvas 画板](https://elitefan0814.github.io/firstdemo/divCanvas.html)
 10. [canvas 画板](https://elitefan0814.github.io/firstdemo/Canvas.html)
+11. [轮播图](https://elitefan0814.github.io/firstdemo/swiper_second.html)
