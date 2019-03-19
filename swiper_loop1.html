@@ -76,7 +76,7 @@
             }
             // 自动轮播函数
             function autoRun(duration) {
-                setInterval(() => {
+                return setInterval(() => {
                     setLeave(getImgNode(n))
                         .one('transitionend', (event) => { setEnter($(event.currentTarget)) })
                     nLoop()
