@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM事件</title>
+</head>
+
+<body>
+    <button id='btn1' onclick="print">错误写法：onclick="print"</button>
+    <br>
+    <button id='btn2' onclick="print()">正确写法：onclick="print()"</button>
+    <p>
+        上面这种写法：onclick="要执行的代码 "用户点击之后，执行的是：eval('要执行的代码'),
+        所以第一个是错误的。
+    </p>
+    <hr>
+    <button id='btn3'>写在js中的错误写法：btn3.onclick = print1()</button>
+    <br>
+    <button id='btn4'>写在js中的正确写法：btn4.onclick = print1</button>
+    <br>
+
+    <p>
+        上面错误的写法表示：把print1()执行的结果(undefined)赋值给btn4.onclick
+        最终执行的是 btn4.onclick = undefined
+        注意：btn4.onclick = print1()这段代码中的 print1() 会在加载页面时执行一次
+    </p>
+    <script>
+        btn3.onclick = print1
+        btn4.onclick = print1()
+
+        btn3.onclick = print1
+        btn3.onclick = print2
+        // 点击时只会执行print2
+        // onclick 是元素的一个属性，是可以被覆盖的，谨慎使用
+        btn3.addEventListener('click', addEvent1)
+        btn3.addEventListener('click', addEvent2)
+        btn3.addEventListener('click', oneEvent)
+        // print2
+        // 这是事件监听1
+        // 这是事件监听2
+        // 这个事件监听只执行一次就销毁
+
+        // 点击后，执行完被覆盖的 onclick 之后，会顺序执行 btn3 的事件监听函数
+        // 因为事件监听函数会创建一个相关事件的 队列 先进先出，并不会互相覆盖
+
+
+        function print() {
+            console.log('print')
+        }
+        function print1() {
+            console.log('print1')
+        }
+        function print2() {
+            console.log('print2')
+        }
+        function addEvent1() {
+            console.log('这是事件监听1')
+        }
+        function addEvent2() {
+            console.log('这是事件监听2')
+        }
+        function oneEvent(event) {
+            console.log('这个事件监听只执行一次就销毁')
+            event.currentTarget.removeEventListener('click', oneEvent)
+        }
+    </script>
+</body>
+
+</html>

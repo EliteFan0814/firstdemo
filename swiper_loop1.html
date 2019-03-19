@@ -33,23 +33,40 @@
         $(function () {
             var img_num = $('.images img').length
             var n = 1
-            
+            var $allBtn = $('.btnList button')
             defaultPosition()
 
-            setInterval(() => {
+            // 鼠标点击事件
+            $allBtn.on('click', function (event) {
+                // leave 当前图片
                 setLeave(getImgNode(n))
-                    .one('transitionend', (event) => {
-                        setEnter($(event.currentTarget))
-                    })
-                nLoop()
-                setCurrent(getImgNode(n + 1))
-                n++
-            }, 2000)
+                    .one('transitionend', (event) => { setEnter($(event.currentTarget)) })
+                // 捕获点击的图片
+                n = $(event.currentTarget).index() + 1
+                // current 和高亮点击的图片
+                setCurrent(getImgNode(n))
+            })
+
+            // 默认开启自动轮播
+            var auto_run = autoRun(2000)
+
+            // mouseenter or mouseleave 清除和开始自动轮播
+            $('.window').hover(function () {
+                clearInterval(auto_run)
+            }, function () {
+                auto_run = autoRun(2000)
+            })
+            $('.btnList').hover(function () {
+                clearInterval(auto_run)
+            }, function () {
+                auto_run = autoRun(2000)
+            })
 
             //设置图片默认状态
             function defaultPosition() {
                 $('.images img').eq(0).addClass('current')
                     .siblings().addClass('enter')
+                $('.btnList button').eq(0).addClass('red')
             }
             //loop n的值
             function nLoop() {
@@ -57,9 +74,20 @@
                     n = 0
                 }
             }
-            // 获取第 n 个图片node
+            // 自动轮播函数
+            function autoRun(duration) {
+                setInterval(() => {
+                    setLeave(getImgNode(n))
+                        .one('transitionend', (event) => { setEnter($(event.currentTarget)) })
+                    nLoop()
+                    setCurrent(getImgNode(n + 1))
+                    n++
+                }, duration)
+            }
+            // 获取第 n 个图片并高亮
             function getImgNode(n) {
-                $('.images img').eq(n)
+                $allBtn.eq(n - 1).addClass('red').siblings('.red').removeClass('red')
+                return $('.images img').eq(n - 1)
             }
             //设置状态为 current
             function setCurrent($node) {

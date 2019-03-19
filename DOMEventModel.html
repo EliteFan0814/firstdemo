@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM事件模型</title>
+    <style>
+        div {
+            border: 1px solid red;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="grand">
+        爷爷
+        <div id="farther">
+            爸爸
+            <div id="son">儿子</div>
+        </div>
+    </div>
+    <script>
+        // addEventListener 的第三个参数传递一个 boolean 值，
+        // true 表示 捕获阶段执行
+        // false 表示 冒泡阶段执行（不写就是 undefined = false）
+        // 如果一个元素既有捕获监听，又有冒泡监听：
+        // 1 若是整个事件模型中的最内部的元素，则谁添加在前谁先执行
+        // 2 若不是整个事件模型中的最内部元素，则先执行捕获后执行冒泡
+
+        //    grand.addEventListener('click',function fn1(){
+        //        console.log('这是爷爷')
+        //    })
+        
+        farther.addEventListener('click', function fn2() {
+            console.log('这是爸爸冒泡')
+        })
+        farther.addEventListener('click', function fn2() {
+            console.log('这是爸爸捕获')
+        }, true)
+    //    son.addEventListener('click',function fn3(){
+    //        console.log('这是儿子')
+    //    })
+    </script>
+</body>
+
+</html>

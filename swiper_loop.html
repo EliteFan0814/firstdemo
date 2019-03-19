@@ -44,6 +44,7 @@
                     n = 0
                 }
                 $('.images img:nth-child(' + (n + 1) + ')').removeClass('enter').addClass('current')
+                $('.btnList button').eq(n).addClass('red').siblings('.red').removeClass('red')
                 n++
             }, 2000)
 
@@ -51,6 +52,7 @@
             function defaultPosition(){
                 $('.images img').eq(0).addClass('current')
                 .siblings().addClass('enter')
+                $('.btnList button').eq(0).addClass('red')
             }
         })
 
