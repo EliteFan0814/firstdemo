@@ -11,3 +11,4 @@
 09. [divCanvas 画板](https://elitefan0814.github.io/firstdemo/divCanvas.html)
 10. [canvas 画板](https://elitefan0814.github.io/firstdemo/Canvas.html)
 11. [轮播图](https://elitefan0814.github.io/firstdemo/swiper_second.html)
+12. [无缝轮播图](https://elitefan0814.github.io/firstdemo/swiper_loop1.html)
