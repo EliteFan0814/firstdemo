@@ -33,6 +33,7 @@
         $(function () {
             var img_num = $('.images img').length
             var n = 1
+            
             defaultPosition()
 
             setInterval(() => {
@@ -62,16 +63,15 @@
             }
             //设置状态为 current
             function setCurrent($node) {
-                $node.removeClass('enter leave').addClass('current')
+                return $node.removeClass('enter leave').addClass('current')
             }
             //设置状态为 leave
             function setLeave($node) {
-                $node.removeClass('current enter').addClass('leave')
-                return $node
+                return $node.removeClass('current enter').addClass('leave')
             }
             //设置状态为 enter
             function setEnter($node) {
-                $node.removeClass('current leave').addClass('enter')
+                return $node.removeClass('current leave').addClass('enter')
             }
         })
 
