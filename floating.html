@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>关闭浮层</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrapper {
+            position: relative;
+            display: inline-block;
+            border: 1px solid black;
+        }
+
+        .popover {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            border: 1px solid red;
+            white-space: nowrap;
+            padding: 10px;
+            margin-left: 10px;
+            background-color: white;
+        }
+
+        .popover::before {
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0px;
+            border: 10px solid transparent;
+            border-right-color: red
+        }
+
+        .popover::after {
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 0;
+            margin-right: -1px;
+            border: 10px solid transparent;
+            border-right-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper" class="wrapper">
+        <button id="clickme">
+            点我</button>
+        <div id="popover" class="popover"><input type='checkbox'>浮层</div>
+    </div>
+    <script>
+/* js版本一
+clickme.addEventListener('click',function(event){
+popover.style.display = 'block'
+})
+wrapper.addEventListener('click',function(event){
+event.stopPropagation()
+//event.preventDefault()
+})
+document.addEventListener('click',function(){
+popover.style.display = 'none'
+})
+*/
+
+// jQuery版本二
+/*
+$('#clickme').on('click', function() {
+    $('#popover').show()
+    $(document).one('click', function() {
+    $('#popover').hide()
+    })
+})
+$('#wrapper').on('click',function(event){
+    event.stopPropagation()
+})
+*/
+
+// jQuery版本三
+$('#clickme').on('click', function () {
+    $('#popover').show()
+    setTimeout(function () {
+        $(document).one('click', function () {
+            $('#popover').hide()
+        })
+    }, 0)
+})
+    </script>
+</body>
+
+</html>
