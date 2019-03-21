@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>popover</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .red.active {
+            background-color: red;
+        }
+
+        .blue.active {
+            background-color: blue;
+        }
+
+        .green.active {
+            background-color: green;
+        }
+
+        .yellow.active {
+            background-color: yellow;
+        }
+
+        .purple.active {
+            background-color: purple;
+        }
+       
+        .red{
+            height: 100vw;
+            width: 100vw;
+        }
+        div {
+            display: flex;
+            flex: 1;
+            border: 1px solid black;
+            padding: 10px;
+            transition: all 0.5s;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="red">
+        <div class="blue">
+            <div class="green">
+                <div class="yellow">
+                    <div class="purple"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var n = 0
+        $('div').on('click', function (event) {
+            setTimeout(function(){
+                $(event.currentTarget).toggleClass('active')
+            },n*1000)
+            n++
+            if(n === 5){
+                n = 0
+            }
+        })
+    </script>
+</body>
+
+</html>
