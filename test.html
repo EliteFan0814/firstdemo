@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的页面</title>
+    <style>
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        div.defaultLineHeight {
+            font-size: 50px;
+            font-family: 'Courier New';
+        }
+
+        hr {
+            margin: 0;
+        }
+        .hrhight{
+            margin: 20px 0;
+            border: 1px dotted black;
+        }
+        div.nameAlign{
+            border: 1px solid red;
+            
+        }
+        .nameAlign span{
+            display: inline-block;
+            font-size: 20px;
+            line-height: 20px;
+            height: 20px;
+            width: 4em;
+            overflow: hidden;
+            border: 1px solid green;
+            text-align: justify;
+        }
+        .nameAlign span::after{
+            content: "";
+            display: inline-block;
+            width: 100%;
+        }
+        .wordNoBreak{
+            width: 100px;
+            border: 1px solid red;
+        }
+        .wordBreak{
+            width: 100px;
+            border: 1px solid red;
+            word-break: break-all;
+        }
+        .wordOverflow{
+            width: 200px;
+            border: 1px solid red;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .wordsOverflow{
+            width: 200px;
+            border: 1px solid red;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical; 
+        }
+        .textCenterAlign{
+            border: 1px solid red;
+            width: 200px;
+            line-height: 24px;
+            padding: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="defaultLineHeight"><hr>plf<hr>lfp<hr></div>
+    <!-- 
+        两条灰线的距离就是字体 'Courier New' 的默认行高，
+        默认行高一般为 font-size 的固定倍数，可以使用 line-height 强制制定字体行高
+        例如：字体 fpc 的默认行高为1.4倍font-size
+
+        不同字体的默认行高是不一样的
+    -->
+    <hr class="hrhight">
+    <!-- 制作一个中文文字两端对齐 -->
+    <div class="nameAlign">
+        <span>姓名</span><br>
+        <span>联系方式</span>
+    </div>
+
+    <hr class="hrhight">
+    <!-- 单词分割问题 -->
+    <div class="wordNoBreak">
+        hello
+        1
+        fantasyfunnywithhappyending
+        this is my lovely pet wow
+        fantasy-funny-with-happy-ending
+    </div>
+    <hr>
+    <div class="wordBreak">
+            hello
+            1
+            fantasyfunnywithhappyending
+            this is my lovely pet wow
+            fantasy-funny-with-happy-ending
+    </div>
+
+    <hr class="hrhight">
+    <!-- 单行/多行文字溢出省略 -->
+    <div class="wordOverflow">
+            Summers span decades. Winters can last a lifetime. And the struggle for the Iron Throne begins.
+    </div>
+    <div class="wordsOverflow">
+            Summers span decades. Winters can last a lifetime. And the struggle for the Iron Throne begins.
+    </div>
+    <!-- 单行文字居中
+        最烂的代码才会给 height 固定值，
+        最烂的代码才使用 height 居中，
+        不管什么情况，尽量不要固定 height
+        使用 line-height 和 padding 调整居中，这样即使单行变多行也不会出现 bug
+    -->
+    <div class="textCenterAlign">
+            Summers span decades. 
+    </div>
+</body>
+
+</html>

@@ -50,6 +50,15 @@
             // 默认开启自动轮播
             var auto_run = autoRun(2000)
 
+            // 监听页面是否激活
+            document.addEventListener('visibilitychange',function(){
+                if(document.hidden){
+                    clearInterval(auto_run)
+                }else{
+                    auto_run = autoRun(2000)
+                }
+            })
+            
             // mouseenter or mouseleave 清除和开始自动轮播
             $('.window').hover(function () {
                 clearInterval(auto_run)
