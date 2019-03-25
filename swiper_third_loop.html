@@ -86,7 +86,17 @@
                 $allBtn.eq(i % btn_num).click()
                 i++
             }, 1000)
-
+            // 检测网页是否激活
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    clearInterval(timer)
+                } else {
+                    timer = setInterval(function () {
+                        $allBtn.eq(i % btn_num).click()
+                        i++
+                    }, 1000)
+                }
+            })
             $images.hover(function () {
                 clearInterval(timer)
             }, function () {
