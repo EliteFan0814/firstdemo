@@ -136,18 +136,18 @@
                 clearInterval(timer)
             }, function () {
                 timer = setInterval(function () {
-                    $allBtn.eq(current % btn_num).click()
-                    current++
-                }, 1000)
+                gotoNextBtn(i % btn_num)
+                i++
+            }, 1000)
             })
 
             $btnWraper.hover(function () {
                 clearInterval(timer)
             }, function () {
                 timer = setInterval(function () {
-                    $allBtn.eq(current % btn_num).click()
-                    current++
-                }, 1000)
+                gotoNextBtn(i % btn_num)
+                i++
+            }, 1000)
             })
 
             function gotoNextBtn(nextbtn) {
