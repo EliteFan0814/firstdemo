@@ -76,7 +76,14 @@
             })
             //设置初始自动轮播
             var img_timmer = setTimer(1000)
-
+            // 检测网页是否激活
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    clearInterval(img_timmer)
+                } else {
+                    img_timmer = setTimer(1000)
+                }
+            })
             //鼠标hover触发和停止自动轮播
             $window.hover(function () {
                 window.clearInterval(img_timmer)
