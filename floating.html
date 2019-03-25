@@ -54,8 +54,7 @@
 
 <body>
     <div id="wrapper" class="wrapper">
-        <button id="clickme">
-            点我</button>
+        <button id="clickme">点我</button>
         <div id="popover" class="popover"><input type='checkbox'>浮层</div>
     </div>
     <script>
@@ -73,7 +72,7 @@ popover.style.display = 'none'
 */
 
 // jQuery版本二
-/*
+
 $('#clickme').on('click', function() {
     $('#popover').show()
     $(document).one('click', function() {
@@ -83,17 +82,17 @@ $('#clickme').on('click', function() {
 $('#wrapper').on('click',function(event){
     event.stopPropagation()
 })
-*/
 
-// jQuery版本三
-$('#clickme').on('click', function () {
-    $('#popover').show()
-    setTimeout(function () {
-        $(document).one('click', function () {
-            $('#popover').hide()
-        })
-    }, 0)
-})
+
+// jQuery版本三 有bug
+// $('#clickme').on('click', function () {
+//     $('#popover').show()
+//     setTimeout(function () {
+//         $(document).one('click', function () {
+//             $('#popover').hide()
+//         })
+//     }, 100)
+// })
     </script>
 </body>
 
