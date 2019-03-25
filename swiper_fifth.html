@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>轮播图</title>
+    <title>轮播图完成版</title>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <style>
         * {
@@ -94,7 +94,6 @@
             var $allBtn = $('#btnList button')
             var btn_num = $allBtn.length
             var current = 0
-            var i = 0
             var $firstCopy = $imgs.eq(0).clone(true)
             var $lastCopy = $imgs.eq($imgs.length - 1).clone(true)
             $images.prepend($lastCopy)
@@ -103,64 +102,60 @@
             $images.css('transition', 'transform 0.5s')
             $images.css('transform', 'translateX(-300px)')
             // 开启自动播放
-            var timer = setInterval(function () {
-                gotoNextBtn(i % btn_num)
-                i++
-            }, 1000)
+            var timer = autoRun(1000)
             // 监听当前页面是否激活
             document.addEventListener('visibilitychange', function () {
                 if (document.hidden) {
                     clearInterval(timer)
                 } else {
-                    timer = setInterval(function () {
-                        gotoNextBtn(i % btn_num)
-                        i++
-                    }, 1000)
+                    timer = autoRun(1000)
                 }
             })
             // 前一张/后一张
-            $preImg.on('click', function () {
-                let pre = 0
-                if (current === 0) {
-                    pre = btn_num - 1
-                } else {
-                    pre = current - 1
-                }
-                gotoNextBtn(pre)
-            })
-            $nexImg.on('click', function () {
-                let nex = 0
-                if (current === (btn_num - 1)) {
-                    nex = 0
-                } else {
-                    nex = current + 1
-                }
-                gotoNextBtn(nex)
-            })
+            preOrnex()
             // 按钮列表点击
             $allBtn.on('click', function (event) {
                 let nextbtn = $(event.currentTarget).index()
                 gotoNextBtn(nextbtn)
             })
             // hover 暂停自动播放
-            $images.hover(function () {
-                clearInterval(timer)
-            }, function () {
-                timer = setInterval(function () {
-                    gotoNextBtn(i % btn_num)
-                    i++
-                }, 1000)
-            })
-            $btnWraper.hover(function () {
-                clearInterval(timer)
-            }, function () {
-                timer = setInterval(function () {
-                    gotoNextBtn(i % btn_num)
-                    i++
-                }, 1000)
-            })
+            hoverStop()
+
+            // 自动播放函数
+            function autoRun(duration) {
+                return setInterval(function () {
+                    gotoNextBtn(current + 1)
+                }, duration)
+            }
+            //previous next 函数
+            function preOrnex() {
+                $preImg.on('click', function () {
+                    gotoNextBtn(current - 1)
+                })
+                $nexImg.on('click', function () {
+                    gotoNextBtn(current + 1)
+                })
+            }
+            // hover 暂停函数
+            function hoverStop() {
+                $images.hover(function () {
+                    clearInterval(timer)
+                }, function () {
+                    timer = autoRun(1000)
+                })
+                $btnWraper.hover(function () {
+                    clearInterval(timer)
+                }, function () {
+                    timer = autoRun(1000)
+                })
+            }
             // 轮播主函数
             function gotoNextBtn(nextbtn) {
+                if (nextbtn > btn_num - 1) {
+                    nextbtn = 0
+                } else if (nextbtn < 0) {
+                    nextbtn = btn_num - 1
+                }
                 if (current === (btn_num - 1) && nextbtn === 0) {
                     $images.css('transform', 'translateX(' + (-300) * (btn_num + 1) + 'px)').one('transitionend', function () {
                         // $images.hide().offset()
