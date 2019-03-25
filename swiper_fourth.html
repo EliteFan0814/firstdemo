@@ -13,21 +13,36 @@
             padding: 0;
         }
 
-        #window,
-        #btnList {
+        #banner {
+            text-align: center;
+        }
+
+        #window {
             overflow: hidden;
             width: 300px;
             margin: 10px auto;
         }
 
-        #btnList {
-            text-align: center;
+        #button-wraper {
+            width: 200px;
+            margin: 0px auto;
         }
 
-        #btnList>button {
-            font-size: 20px;
-            padding: 5px 10px;
+        #btnList,
+        #preNex {
+            display: inline-block;
+        }
+
+        #button-wraper button {
+            font-size: 16px;
+            padding: 0 5px;
             margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        #btnList>button:last-child,
+        #preNex>button:last-child {
+            margin-right: 0;
         }
 
         #images {
@@ -54,21 +69,27 @@
                 <img src="./img/slide5.png">
             </div>
         </div>
-        <div id="btnList">
-            <button id="btn1">1</button>
-            <button id="btn2">2</button>
-            <button id="btn3">3</button>
-            <button id="btn4">4</button>
-            <button id="btn5">5</button>
+        <div id="button-wraper">
+            <div id="preNex"><button>上一张</button><button>下一张</button></div>
+            <div id="btnList">
+                <button id="btn1">1</button>
+                <button id="btn2">2</button>
+                <button id="btn3">3</button>
+                <button id="btn4">4</button>
+                <button id="btn5">5</button>
+            </div>
         </div>
+
     </div>
 
 
     <script>
         $(function () {
-            // var $window = $('#window')
             var $images = $('#images')
             var $imgs = $('#images img')
+            var $btnWraper = $('#button-wraper')
+            var $preImg = $('#preNex>button').eq(0)
+            var $nexImg = $('#preNex>button').eq(1)
             var $btn = $('#btnList')
             var $allBtn = $('#btnList button')
             var btn_num = $allBtn.length
@@ -83,31 +104,45 @@
             $images.css('transform', 'translateX(-300px)')
 
             var timer = setInterval(function () {
-                $allBtn.eq(i % btn_num).click()
+                gotoNextBtn(i % btn_num)
                 i++
             }, 1000)
+
+            $preImg.on('click', function () {
+                let pre = 0
+                if (current === 0) {
+                    pre = btn_num - 1
+                } else {
+                    pre = current - 1
+                }
+                gotoNextBtn(pre)
+            })
+
+            $allBtn.on('click',function(event){
+                let nextbtn = $(event.currentTarget).index()
+                gotoNextBtn(nextbtn)
+            })
 
             $images.hover(function () {
                 clearInterval(timer)
             }, function () {
                 timer = setInterval(function () {
-                    $allBtn.eq(i % btn_num).click()
-                    i++
+                    $allBtn.eq(current % btn_num).click()
+                    current++
                 }, 1000)
             })
 
-            $btn.hover(function () {
+            $btnWraper.hover(function () {
                 clearInterval(timer)
             }, function () {
                 timer = setInterval(function () {
-                    $allBtn.eq(i % btn_num).click()
-                    i++
+                    $allBtn.eq(current % btn_num).click()
+                    current++
                 }, 1000)
             })
 
-            $allBtn.on('click', function (event) {
-                let nextBtn = $(event.currentTarget).index()
-                if (current === (btn_num - 1) && nextBtn === 0) {
+            function gotoNextBtn(nextbtn) {
+                if (current === (btn_num - 1) && nextbtn === 0) {
                     $images.css('transform', 'translateX(' + (-300) * (btn_num + 1) + 'px)').one('transitionend', function () {
                         // $images.hide().offset()
                         // $images.css('transform', 'translateX(-300px)').show()
@@ -115,20 +150,21 @@
                             $images.hide().css('transition', 'none').css('transform', 'translateX(-300px)').show().css('transition', 'transform 0.5s')
                         }
                     })
-                } else if (current === 0 && nextBtn === (btn_num - 1)) {
+                } else if (current === 0 && nextbtn === (btn_num - 1)) {
                     $images.css('transform', 'translateX(0px)').one('transitionend', function () {
                         // $images.hide().offset()
                         // $images.css('transform', 'translateX(' + (-300) * btn_num + 'px)').show()
-                        if (current === btn_num) {
+                        if (current === btn_num - 1) {
                             $images.hide().css('transition', 'none').css('transform', 'translateX(' + (-300) * btn_num + 'px)').show().css('transition', 'transform 0.5s')
                         }
                     })
                 } else {
-                    $images.css('transform', 'translateX(' + (-300) * (nextBtn + 1) + 'px)')
+                    $images.css('transform', 'translateX(' + (-300) * (nextbtn + 1) + 'px)')
                 }
-                current = nextBtn
+                current = nextbtn
                 $allBtn.eq(current).addClass('red').siblings('.red').removeClass('red')
-            })
+            }
+
         })
 
     </script>

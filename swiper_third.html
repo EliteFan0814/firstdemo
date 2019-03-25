@@ -119,7 +119,7 @@
                     $images.css('transform', 'translateX(0px)').one('transitionend', function () {
                         // $images.hide().offset()
                         // $images.css('transform', 'translateX(' + (-300) * btn_num + 'px)').show()
-                        if (current === btn_num) {
+                        if (current === (btn_num - 1) {
                             $images.hide().css('transition', 'none').css('transform', 'translateX(' + (-300) * btn_num + 'px)').show().css('transition', 'transform 0.5s')
                         }
                     })
