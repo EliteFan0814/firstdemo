@@ -117,6 +117,15 @@
                 }
                 gotoNextBtn(pre)
             })
+            $nexImg.on('click', function () {
+                let nex = 0
+                if (current === (btn_num - 1)) {
+                    nex = 0
+                } else {
+                    nex = current + 1
+                }
+                gotoNextBtn(nex)
+            })
 
             $allBtn.on('click',function(event){
                 let nextbtn = $(event.currentTarget).index()
@@ -154,7 +163,7 @@
                     $images.css('transform', 'translateX(0px)').one('transitionend', function () {
                         // $images.hide().offset()
                         // $images.css('transform', 'translateX(' + (-300) * btn_num + 'px)').show()
-                        if (current === btn_num - 1) {
+                        if (current === (btn_num - 1)) {
                             $images.hide().css('transition', 'none').css('transform', 'translateX(' + (-300) * btn_num + 'px)').show().css('transition', 'transform 0.5s')
                         }
                     })
