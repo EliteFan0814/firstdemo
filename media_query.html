@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        header {
+            padding: 10px;
+            border: 1px solid red;
+            position: relative;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            background-color: green;
+        }
+
+        .menu {
+            position: absolute;
+            top: 40px;
+            right: 10px;
+            padding: 10px;
+        }
+        .mobile {
+            display: none;
+
+        }
+        .mobile.active {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid green;
+            padding: 0 5px;
+        }
+        .mobile li {
+            display: inline-block;
+        }
+        .pc{
+            display: none;
+        }
+        @media (min-width: 420px) {
+            .menu,
+            .mobile.active {
+                display: none;
+            }
+            header{
+                display: flex;
+                align-items: center;
+            }
+            .pc{
+                border: 1px solid red;
+                display: flex;
+                width: 70%;
+                justify-content: space-between;
+                margin: 0 auto;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+    <header class="clearfix">
+        <div class="logo"></div>
+        <button class="menu">菜单</button>
+        <ul class="mobile">
+            <li>导航1</li>
+            <li>导航2</li>
+            <li>导航3</li>
+            <li>导航4</li>
+            <li>导航5</li>
+        </ul>
+        <ul class="pc">
+            <li>导航1</li>
+            <li>导航2</li>
+            <li>导航3</li>
+            <li>导航4</li>
+            <li>导航5</li>
+        </ul>
+    </header>
+    <script>
+        var menu = document.querySelector('.menu')
+        var mobile = document.querySelector('.mobile')
+        menu.onclick = function () {
+            mobile.classList.toggle('active')
+        }
+    </script>
+</body>
+
+</html>

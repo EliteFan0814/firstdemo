@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>单个层叠上下文内的层叠顺序</title>
+    <style>
+        * {
+            margin: 0;
+        }
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        html {
+            border: 5px solid rgb(255, 174, 0);
+            padding: 20px;
+            font: 12px/20px Arial, sans-serif;
+            height: 400px;
+        }
+        div{
+            width: 180px;
+            height: 90px;
+            padding: 10px;
+            position: absolute;
+            color: aliceblue;
+        }
+        h1 {
+            font: inherit;
+            font-weight: bold;
+        }
+        .bg{
+            background-color: #B475C1;
+            top: 20px;
+            left: 20px;
+        }
+        .negativeZ{
+            background-color: #8975C1;
+            top: 70px;
+            left: 70px;
+        }
+        .blockElement{
+            background-color: #4F70C1;
+            top: 120px;
+            left: 120px;
+        }
+        .floatElement{
+            background-color: #51CD8E;
+            top: 170px;
+            left: 170px;
+        }
+        .inlineElement{
+            background-color: #9CD262;
+            top: 220px;
+            left: 220px;
+        }
+        .zAuto{
+            background-color: #D9AC4D;
+            top: 270px;
+            left: 270px;
+        }
+        .positiveZ{
+            background-color: #D83953;
+            top: 320px;
+            left: 320px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+            <h1>background / border</h1>
+    </div>
+    <div class="negativeZ">
+            <h1>负z-index</h1>
+    </div>
+    <div class="blockElement">
+            <h1>block块元素</h1>
+    </div>
+    <div class="floatElement">
+            <h1>float浮动元素</h1>
+    </div>
+    <div class="inlineElement">
+            <h1>inline / inline-block</h1>
+    </div>
+    <div class="zAuto">
+            <h1>z-index: auto或当成z-index: 0</h1>
+    </div>
+    <div class="positiveZ">
+            <h1>正z-index</h1>
+    </div>
+</body>
+</html>
