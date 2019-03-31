@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浮动布局</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        .clearfix::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .parent{
+            border: 1px solid red;
+        }
+        .child{
+            float: left;
+        }
+        .child:nth-child(1){
+            width: 10%;
+            background-color: #888;
+        }
+        .child:nth-child(2){
+            width: 90%;
+            background-color: #ddd;
+        }
+        .logo{
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        nav{
+            float: right;
+            line-height: 20px;
+            padding: 15px;
+            /* border: 1px solid; */
+        }
+        nav ul li{
+            float: left;
+            margin-left: 10px;
+        }
+        .banner{
+            width: 800px;
+            height: 300px;
+            margin: 10px auto;
+            background-color: red;
+        }
+        .pictures{
+            border: 1px solid red;
+            width: 800px;
+            margin: 10px auto;
+        }
+        .picture{
+            float: left;
+            width: 194px;
+            height: 194px;
+            margin: 4px;
+            background-color: green;
+        }
+        .picture:nth-child(4n+1){
+            margin-left: 0;
+        }
+        .picture:nth-child(4n){
+            margin-right: 0;
+        }
+        /* ie 的方法
+        
+         */
+    </style>
+</head>
+<body>
+    <div class="parent clearfix">
+        <div class="child">
+            <div class="logo">logo</div>
+        </div>
+        <div class="child clearfix">
+            <nav>
+                <ul class="navigator">
+                    <li>导航1</li>
+                    <li>导航2</li>
+                    <li>导航3</li>
+                    <li>导航4</li>
+                    <li>导航5</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="banner"></div>
+    <div class="pictures clearfix">
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+    </div>
+</body>
+</html>
