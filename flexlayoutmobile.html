@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浮动布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .parent {
+            border: 1px solid red;
+        }
+
+        .child {
+            float: left;
+        }
+
+        .child:nth-child(1) {
+            width: 10%;
+            background-color: #888;
+        }
+
+        .child:nth-child(2) {
+            width: 90%;
+            background-color: #ddd;
+        }
+
+        .logo {
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .nav1 {
+            float: right;
+            line-height: 20px;
+            padding: 15px;
+            /* border: 1px solid; */
+        }
+
+        .nav1 ul li {
+            float: left;
+            margin-left: 10px;
+        }
+
+        .nav2 {
+            display: none;
+        }
+
+        .mbtn {
+            display: none;
+        }
+
+        @media (max-width: 400px) {
+            .parent.clearfix {
+                position: relative;
+            }
+
+            .nav1 {
+                display: none;
+            }
+
+            .nav2 {
+                display: block;
+            }
+
+            .nav2 ul li {
+                float: left;
+                margin-left: 10px;
+            }
+
+            .mbtn {
+                display: inline-block;
+                border: 0;
+                line-height: 20px;
+                padding: 5px;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        .banner {
+            width: 800px;
+            height: 300px;
+            margin: 10px auto;
+            background-color: red;
+        }
+
+        @media (max-width: 400px) {
+            .banner {
+                width: auto;
+            }
+        }
+
+        .pictures {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            border: 1px solid red;
+            width: 800px;
+            margin: 10px auto;
+        }
+
+        .picture {
+            width: calc(25% - 8px);
+            height: 194px;
+            margin: 4px 0;
+            background-color: green;
+        }
+
+        @media (max-width: 400px) {
+            .pictures {
+                width: auto;
+            }
+
+            .picture {
+                width: calc(50% - 8px);
+            }
+        }
+
+        .art {
+            width: 800px;
+            margin: 0 auto;
+            background-color: aqua;
+        }
+
+        .art aside {
+            float: left;
+            width: 33.333%
+        }
+
+        .art main {
+            float: left;
+            width: 66.666%;
+        }
+
+        .art .asidechild {
+            background-color: red;
+            height: 300px;
+            margin-right: 10px;
+        }
+
+        .art .mainchild {
+            background-color: red;
+            height: 300px;
+        }
+
+        @media (max-width: 400px) {
+            .art {
+                display: flex;
+                width: auto;
+                flex-direction: column;
+            }
+
+            .art aside {
+                width: auto;
+            }
+
+            .art main {
+                width: auto;
+            }
+
+            .art .asidechild {
+                background-color: red;
+                height: auto;
+                margin-right: 0px;
+            }
+
+            .art .mainchild {
+                background-color: red;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent clearfix">
+        <div class="child">
+            <div class="logo">logo</div>
+        </div>
+
+        <div class="child clearfix">
+            <button class="mbtn">menu</button>
+            <nav class="nav1">
+                <ul class="navigator">
+                    <li>导航1</li>
+                    <li>导航2</li>
+                    <li>导航3</li>
+                    <li>导航4</li>
+                    <li>导航5</li>
+                </ul>
+            </nav>
+        </div>
+        <nav class="nav2">
+            <ul class="navigator">
+                <li>导航1</li>
+                <li>导航2</li>
+                <li>导航3</li>
+                <li>导航4</li>
+                <li>导航5</li>
+            </ul>
+        </nav>
+    </div>
+    <div class="banner"></div>
+    <div class="pictures">
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+    </div>
+    <div class="art clearfix">
+        <aside>
+            <div class="asidechild">广告</div>
+        </aside>
+        <main>
+            <div class="mainchild">广告</div>
+        </main>
+    </div>
+</body>
+
+</html>
