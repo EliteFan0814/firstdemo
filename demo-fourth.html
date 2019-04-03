@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>范培超</title>
+    <link rel="stylesheet" href="./css/loading.css">
+    <link rel="stylesheet" href="./css/resume.css">
+    <link rel="stylesheet" href="./node_modules/swiper/dist/css/swiper.min.css">
+    <script src="//at.alicdn.com/t/font_1044134_xnjxmgcb0td.js"></script>
+    <style type="text/css">
+        .icon {
+            width: 2em;
+            height: 2em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+
+        .swiper-container {
+            width: 800px;
+            height: 480px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loading" class="loading loadActive"></div>
+    <div class="topBar">
+        <div class="topBarInner clearfix">
+            <div class="logo">
+                <span class="rs">Rs</span><span>card</span>
+            </div>
+            <nav>
+                <ul class="clearfix">
+                    <li><a href="#toAboutMe">关于</a></li>
+                    <li><a href="#toSkill">技能</a></li>
+                    <li class="haveList">
+                        <a href="#toProject">作品</a>
+                        <ul class="hideList">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li class="haveList">
+                        <a href="#toBlog">博客</a>
+                        <ul class="hideList">
+                            <li>博客1</li>
+                            <li>博客2</li>
+                            <li>博客3</li>
+                        </ul>
+                    </li>
+                    <li><a href="">日历</a></li>
+                    <li><a href="">联系方式</a></li>
+                    <li><a href="">其他</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+    <div class="banner">
+        <div class="cover"></div>
+    </div>
+
+    <main class="myCard clearfix">
+        <div class="profileList clearfix">
+            <div class="myPortrait">
+                <img src="./img/face.jpg" alt="">
+            </div>
+            <div data-now id="toAboutMe" class="myProfile">
+                <span class="hello">hello<span class="triangle"></span></span>
+                <h1>范 培 超</h1>
+                <h2>前端开发工程师</h2>
+                <dl>
+                    <dt>年龄：</dt>
+                    <dd>25</dd>
+                    <dt>城市：</dt>
+                    <dd>郑州</dd>
+                    <dt>邮箱：</dt>
+                    <dd>fan552426811@outlook.com</dd>
+                    <dt>手机：</dt>
+                    <dd>15093166666</dd>
+                </dl>
+            </div>
+        </div>
+        <footer>
+            <a href="https://github.com/EliteFan0814">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-GitHub"></use>
+                </svg>
+            </a>
+            <a href="https://twitter.com/elitesuperfan">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-tuitetwitter43"></use>
+                </svg>
+            </a>
+            <a href="https://www.zhihu.com/people/fan-pei-chao/">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-zhihu"></use>
+                </svg>
+            </a>
+        </footer>
+    </main>
+    <div class="download"><a href="./myrscard.pdf" download="范培超的简历">下载 PDF 简历</a></div>
+    <p class="selfText">范培超, 前端开发工程师<br>技能：HTML, CSS, JS, jQuery, Node.js 开发。</p>
+    <section data-now id="toSkill" class="skills">
+        <h2>技 能</h2>
+        <ul class="clearfix">
+            <li>
+                <h3>HTML 5 & CSS 3</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>jQuery</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>Vue</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>React
+                </h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>HTTP</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section data-now id="toProject" class="portfolio">
+        <h2>作 品 集</h2>
+        <!-- <div class="slideBar">
+            <ul class="clearfix">
+                <li id="bar1" class="slides">所 有</li>
+                <li id="bar2" class="slides">框 架 集</li>
+                <li id="bar3" class="slides">原 生JS & CSS</li>
+            </ul>
+            <div class="bar">
+                <div class="bar-inner bar1"></div>
+            </div>
+        </div> -->
+
+        <!-- Slider main container -->
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <img src="./img/keybord-mini.png" class="swiper-slide" alt="">
+                <img src="./img/canvas-mini.png" class="swiper-slide" alt="">
+                <img src="./img/swiper-mini.png" class="swiper-slide" alt="">
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            
+
+            <!-- If we need scrollbar -->
+            <!-- <div class="swiper-scrollbar"></div> -->
+        </div>
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <script src="./node_modules/swiper/dist/js/swiper.min.js"></script>
+        <script>
+            var mySwiper = new Swiper('.swiper-container', {
+                // Optional parameters
+                // direction: 'vertical',
+                loop: true,
+
+                // If we need pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                // And if we need scrollbar
+                // scrollbar: {
+                //     el: '.swiper-scrollbar',
+                // },
+            })
+        </script>
+
+
+        <!-- <div class="album">
+            <div class="left"><img src="./img/left.jpg" alt=""></div>
+            <div class="small"><img src="./img/topRight.jpg" alt=""></div>
+            <div class="small"><img src="./img/bottomRight.jpg" alt=""></div>
+        </div> -->
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.3.0/Tween.min.js"></script>
+    <script>
+        var loading = document.getElementById("loading");
+        setTimeout(function () {
+            loading.classList.remove("loadActive");
+        }, 1500);
+
+
+        let currentShowList = document.querySelectorAll("[data-now]");
+        for (let i = 1; i < currentShowList.length; i++) {
+            currentShowList[i].classList.add("currentJump");
+        }
+
+        var topBar = document.getElementsByClassName("topBar")[0];
+        window.onscroll = function () {
+            window.scrollY > 0 ? topBar.classList.add("topBarMove") : topBar.classList.remove("topBarMove");
+
+            let minShowIndex = 0;
+            for (let i = 1; i < currentShowList.length; i++) {
+                if (Math.abs(currentShowList[i].offsetTop - window.scrollY) < Math.abs(currentShowList[minShowIndex].offsetTop - window.scrollY)) {
+                    minShowIndex = i;
+                }
+            }
+            currentShowList[minShowIndex].classList.remove("currentJump")
+
+            let hrefId = currentShowList[minShowIndex].id;
+            let tarrgetA = document.querySelector("a[href=\"#" + hrefId + "\"]");
+            for (let i = 0; i < currentShowList.length; i++) {
+                let hrefId = currentShowList[i].id;
+                let tarrgetA = document.querySelector("a[href=\"#" + hrefId + "\"]");
+                tarrgetA.parentElement.classList.remove("currentNow");
+            }
+            tarrgetA.parentElement.classList.add("currentNow");
+
+        }
+
+        // let haveList = document.getElementsByClassName("haveList");
+        let activeLi = document.querySelectorAll(".topBar ul>li")
+        for (let i = 0; i < activeLi.length; i++) {
+            activeLi[i].onmouseenter = function (event) {
+                // let target = this.children[1];
+                this.classList.add("active")
+            }
+            activeLi[i].onmouseleave = function (event) {
+                // let target = this.children[1];
+                this.classList.remove("active")
+            }
+        }
+
+        let toAnchor = document.querySelectorAll(".topBar ul.clearfix>li>a");
+        for (let i = 0; i < toAnchor.length; i++) {
+            toAnchor[i].onclick = function (event) {
+                event.preventDefault();
+                let a = event.currentTarget;
+                let hrefId = a.getAttribute("href");
+                let element = document.querySelector(hrefId);
+                console.log(element);
+                // debugger
+                let top = element.offsetTop;
+
+                let n = 400;
+                // let duration = 1000 / n;
+                let targetop = top - 80;
+                let currentTop = window.scrollY;
+                let distance = (targetop - currentTop) / n;
+                let t = Math.abs(((targetop - currentTop) / 100) * 100);
+                // let i = 0;
+                // let interv1 = setInterval(function(){
+                //     if(i >= n){window.clearInterval(interv1)}
+                //     i++;
+                //     window.scrollTo(0,currentTop += distance);
+                // },duration)
+                // window.scrollTo(0,top - 60);
+
+                // Setup the animation loop.
+                function animate(time) {
+                    requestAnimationFrame(animate);
+                    TWEEN.update(time);
+                }
+                requestAnimationFrame(animate);
+
+                var coords = { y: currentTop }; // Start at (0, 0)
+                var tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
+                    .to({ y: targetop }, t) // Move to (300, 200) in 1 second.
+                    .easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
+                    .onUpdate(function () { // Called after tween.js updates 'coords'.
+                        window.scrollTo(0, coords.y);
+                    })
+                    .start(); // Start the tween immediately.
+            }
+        }
+
+        var slides = document.getElementsByClassName("slides");
+        var barInner = document.getElementsByClassName("bar-inner")[0];
+        for (i = 0; i < slides.length; i++) {
+            slides[i].onclick = function () {
+                var slideId = this.id;
+                barInner.className = "bar-inner " + slideId;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

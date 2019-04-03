@@ -339,6 +339,7 @@ section.skills.currentJump .progress{
 }
 section.portfolio {
     text-align: center;
+    position: relative;
 }
 
 section.portfolio>.slideBar {
@@ -401,4 +402,10 @@ section.portfolio>.album .left{
 }
 section.portfolio>.album .small:nth-child(2){
     margin-bottom: 16px;
+}
+
+section.portfolio .swiper-button-prev,
+section.portfolio .swiper-button-next{
+    margin-top: 0;
+    top: 55%;
 }
