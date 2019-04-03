@@ -16,6 +16,18 @@ body {
 a {
     text-decoration: none;
 }
+.icon {
+    width: 2em;
+    height: 2em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.swiper-container {
+    width: 800px;
+    height: 480px;
+}
 
 .topBar {
     /* border: 1px solid red; */
