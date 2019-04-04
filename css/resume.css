@@ -421,3 +421,7 @@ section.portfolio .swiper-button-next{
     margin-top: 0;
     top: 55%;
 }
+section.portfolio .swiper-button-prev:focus,
+section.portfolio .swiper-button-next:focus{
+    outline: none;
+}

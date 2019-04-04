@@ -1,6 +1,7 @@
 !function () {
     // nav 鼠标浮动显示
-    let activeLi = document.querySelectorAll(".topBar ul>li")
+    var view = document.querySelector('.topBar')
+    let activeLi = view.querySelectorAll("ul>li")
     for (let i = 0; i < activeLi.length; i++) {
         activeLi[i].onmouseenter = function (event) {
             this.classList.add("active")

@@ -1,18 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-</head>
-<body>
-    <button id="ddd">ddd</button>
-    <script>
-        ddd.addEventListener("click",myfun)
-        function myfun(){
-            alert(event.type)
+    <style>
+        .parent ul {
+            border: 1px solid red;
         }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <ul class="sonul">
+            <li>ul1的</li>
+            <li>ul1的</li>
+            <li>ul1的</li>
+            <li>ul1的</li>
+        </ul>
+        <div class="son2">
+            <ul class="sunzi">
+                <li>孙子1</li>
+                <li>孙子2</li>
+                <li>孙子3</li>
+                <li>孙子4</li>
+            </ul>
+        </div>
+    </div>
+    <div class="parent2">
+            <ul class="sonul">
+                    <li>ul1的</li>
+                    <li>ul1的</li>
+                    <li>ul1的</li>
+                    <li>ul1的</li>
+                </ul>
+                <div class="son2">
+                    <ul class="sunzi">
+                        <li>孙子1</li>
+                        <li>孙子2</li>
+                        <li>孙子3</li>
+                        <li>孙子4</li>
+                    </ul>
+                </div>
+    </div>
+    <script>
+        var parent = document.querySelector('.parent')
+        parent.querySelector('.parent').style.border = '1px solid green'
+        // console.log(parent.querySelector('.parent'))
+        // console.log(parent.querySelectorAll('ul'))
     </script>
 </body>
+
 </html>
