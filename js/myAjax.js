@@ -58,8 +58,8 @@ $.ajax3 = function (obj) {
 
         let method = obj.method
         let body = obj.body
-        let successFn = obj.successFn
-        let failFn = obj.failFn
+        // let successFn = obj.successFn
+        // let failFn = obj.failFn
         let headers = obj.headers
         for (let key in headers) {
             request.setRequestHeader(key, headers[key])

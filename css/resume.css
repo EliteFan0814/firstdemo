@@ -293,13 +293,15 @@ a {
 }
 
 section.skills,
-section.portfolio {
+section.portfolio,
+section.messageBoard {
     width: 930px;
     margin: 30px auto;
 }
 
 section.skills h2,
-section.portfolio h2 {
+section.portfolio h2,
+section.messageBoard h2 {
     font-size: 34px;
     line-height: 1.2;
     font-weight: bold;
@@ -424,4 +426,20 @@ section.portfolio .swiper-button-next{
 section.portfolio .swiper-button-prev:focus,
 section.portfolio .swiper-button-next:focus{
     outline: none;
+}
+section.messageBoard ul{
+    border: 1px solid red;
+    width: 500px;
+    margin:  0 auto;
+    list-style: none;
+    background-color: #FFFFFF;
+}
+section.messageBoard ul li{
+    margin: 10px;
+    border-bottom: 1px solid #dfe1e0;
+}
+section.messageBoard form{
+    margin:  0 auto;
+    width: 500px;
+    margin-top: 20px;
 }
