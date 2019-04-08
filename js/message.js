@@ -1,28 +1,40 @@
 !function () {
   var view = document.querySelector('section.messageBoard')
-
-  var controller = {
-    view: null,
-    messageList: null,
-    myMesssageForm: null,
-    init: function (view) {
-      this.view = view,
-        this.messageList = view.querySelector('#messageList'),
-        this.myMesssageForm = view.querySelector('#myMesssageForm'),
-        this.initAV(),
-        this.loadMessage(),
-        this.bindEvents()
-    },
+  var model = {
     initAV: function () {
       var APP_ID = 'vWPMDb3tWUd6t7jPBlxyXsHw-gzGzoHsz'
       var APP_KEY = 'Hti6mUX9b8p1MWcNdvC1pWE4'
-
       AV.init({ appId: APP_ID, appKey: APP_KEY })
     },
-    loadMessage: function () {
+    fetch: function () {
       let query = new AV.Query('formMessage')
-
-      query.find().then((message) => {
+      return query.find()
+    },
+    set: function (name, content) {
+      let FormMessage = AV.Object.extend('formMessage')
+      let formMessage = new FormMessage()
+      return formMessage.save({
+        name: name,
+        content: content
+      })
+    }
+  }
+  var controller = {
+    view: null,
+    model: null,
+    messageList: null,
+    myMesssageForm: null,
+    init: function (view, model) {
+      this.view = view,
+        this.model = model,
+        this.messageList = view.querySelector('#messageList'),
+        this.myMesssageForm = view.querySelector('#myMesssageForm'),
+        this.model.initAV(),
+        this.loadMessage(),
+        this.bindEvents()
+    },
+    loadMessage: function () {
+      this.model.fetch().then((message) => {
         let array = message.map((items) => { return items.attributes })
         array.forEach((element) => {
           let li = document.createElement('li')
@@ -43,12 +55,7 @@
       let name = myMesssageForm.querySelector('[name=name]').value
       let content = myMesssageForm.querySelector('[name=content]').value
       if (name && content) {
-        var FormMessage = AV.Object.extend('formMessage');
-        var formMessage = new FormMessage();
-        formMessage.save({
-          name: name,
-          content: content
-        }).then(function (object) {
+        this.model.set(name, content).then(function (object) {
           console.log(object)
           let li = document.createElement('li')
           li.innerHTML = object.attributes.name + '说：' + object.attributes.content
@@ -62,7 +69,7 @@
     }
   }
 
-  controller.init(view)
+  controller.init(view, model)
 
 }.call()
 
