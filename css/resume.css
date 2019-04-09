@@ -428,7 +428,8 @@ section.portfolio .swiper-button-next:focus{
     outline: none;
 }
 section.messageBoard ul{
-    border: 1px solid red;
+    border: 1px solid #ccc;
+    border-radius: 10px;
     width: 500px;
     margin:  0 auto;
     list-style: none;
