@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>在线留言板</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        html {
+            /* border: 1px solid red; */
+            height: 100vh;
+            background-color: #EFEFEF;
+        }
+
+        main {
+            /* border: 1px solid red; */
+            width: 800px;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        main h1 {
+            font-size: 34px;
+            line-height: 1.2;
+            font-weight: bold;
+            /* text-align: center; */
+            margin-bottom: 25px;
+            color: #3D4451;
+        }
+
+        main ul {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 500px;
+            margin: 0 auto;
+            list-style: none;
+            background-color: #FFFFFF;
+        }
+
+        main ul li {
+            margin: 10px;
+            border-bottom: 1px solid #dfe1e0;
+            text-align: left;
+        }
+        form{
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>留言板</h1>
+        <ul id="message-ul">
+        </ul>
+        <form id="form-message">
+            <label>姓名：<input type="text" name="name" id="message-name"></label>
+            <label>留言：<input type="text" name="content" id="message-content"></label>
+            <input type="submit" value="提交">
+        </form>
+    </main>
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.12.0/dist/av-min.js"></script>
+    <script src="./js/MVCleavemessage.js"></script>
+    <script>
+        // 初始化数据库
+        var APP_ID = 'vWPMDb3tWUd6t7jPBlxyXsHw-gzGzoHsz';
+        var APP_KEY = 'Hti6mUX9b8p1MWcNdvC1pWE4';
+
+        AV.init({
+            appId: APP_ID,
+            appKey: APP_KEY
+        });
+
+        // 获取网页关键元素
+        var messageUl = document.querySelector('#message-ul')
+        var formMessage = document.querySelector('#form-message')
+
+        // 加载数据路留言
+        var query = new AV.Query('BlogMessage')
+        query.find().then(function (BlogMessage) {
+            let array = BlogMessage.map((items) => { return items.attributes })
+            array.forEach((element) => {
+                let li = document.createElement('li')
+                li.innerHTML = element.name + ' ：' + element.content
+                messageUl.append(li)
+            })
+        }, function () { alert('加载失败！') })
+
+        // 监听并添加留言
+        formMessage.addEventListener('submit', function (e) {
+            e.preventDefault()
+            let message_name = document.querySelector('#message-name').value
+            let message_content = document.querySelector('#message-content').value
+            if (message_name && message_content) {
+                let BlogMessage = AV.Object.extend('BlogMessage')
+                let blogMessage = new BlogMessage()
+                blogMessage.save({
+                    name: message_name,
+                    content: message_content
+                }).then(function (object) {
+                    let li = document.createElement('li')
+                    li.innerHTML = message_name + ' : ' + message_content
+                    messageUl.appendChild(li)
+                    document.querySelector('#message-name').value = ''
+                    document.querySelector('#message-content').value = ''
+                }, function () {
+                    alert('存储失败！')
+                })
+            } else {
+                alert('请填写完整内容！')
+            }
+        })
+    </script>
+</body>
+
+</html>
