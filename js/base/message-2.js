@@ -1,10 +1,10 @@
 !function () {
   // 视图
   var view = View('section.messageBoard')
-  var model = Model({resourceName: 'formMessage'})
+  var model = Model({ resourceName: 'formMessage' })
 
   var controller = Controller({
-    init: function(view){
+    init: function (view) {
       this.messageList = view.querySelector('#messageList')
       this.myMesssageForm = view.querySelector('#myMesssageForm')
       this.loadMessage()
@@ -22,7 +22,6 @@
     bindEvents: function () {
       this.myMesssageForm.addEventListener('submit', (e) => {
         e.preventDefault()
-        // console.log(this)
         this.writeMessage()
       })
     },
@@ -31,10 +30,10 @@
       let name = myMesssageForm.querySelector('[name=name]').value
       let content = myMesssageForm.querySelector('[name=content]').value
       if (name && content) {
-        this.model.set({name: name, content: content}).then(function (object) {
+        this.model.set({ name: name, content: content }).then((object) => {
           let li = document.createElement('li')
           li.innerHTML = object.attributes.name + ' ：' + object.attributes.content
-          messageList.append(li)
+          this.messageList.append(li)
           myMesssageForm.querySelector('[name=name]').value = ''
           myMesssageForm.querySelector('[name=content]').value = ''
         })
@@ -43,7 +42,7 @@
       }
     }
   })
-  
+
   controller.init(view, model)
 }.call()
 

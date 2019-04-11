@@ -9,8 +9,7 @@ window.Controller = function (options) {
             this.model = model
             this.model.init()
             init.call(this,view)
-            // init(view,model)
-            console.log(this)
+            // init(view)
             // this.loadMessage()
             this.bindEvents()
         }
