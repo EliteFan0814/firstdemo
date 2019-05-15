@@ -6,7 +6,7 @@ $.ajax1 = function (url, method, body, successFn, failFn) {
     request.onreadystatechange = function () {
         if (request.readyState === 4) {
             if (request.status >= 200 && request.status <= 300) {
-                successFn.call(undefined, request.responsText)
+                successFn.call(undefined, request.responseText)
             } else if (request.status >= 400) {
                 failFn.call(undefined, request)
             }
@@ -37,7 +37,7 @@ $.ajax2 = function (obj) {
     request.onreadystatechange = function () {
         if (request.readyState === 4) {
             if (request.status >= 200 && request.status <= 300) {
-                successFn.call(undefined, request.responsText)
+                successFn.call(undefined, request.responseText)
             } else if (request.status >= 400) {
                 failFn.call(undefined, request)
             }
@@ -48,6 +48,7 @@ $.ajax2 = function (obj) {
 
 $.ajax3 = function (obj) {
     return new Promise(function (resolve, reject) {
+        let request = new XMLHttpRequest()
         let url
         if (arguments.length === 1) {
             url = obj.url
@@ -68,7 +69,7 @@ $.ajax3 = function (obj) {
         request.onreadystatechange = function () {
             if (request.readyState === 4) {
                 if (request.status >= 200 && request.status <= 300) {
-                    resolve.call(undefined, request.responsText)
+                    resolve.call(undefined, request.responseText)
                 } else if (request.status >= 400) {
                     reject.call(undefined, request)
                 }
@@ -87,8 +88,8 @@ myBtn.addEventListener('click', function () {
             'Content-Type': 'application/x-www-form-encoded',
             fpc: 'syq'
         },
-        successFn: function (responsText) {
-            console.log(responsText)
+        successFn: function (responseText) {
+            console.log(responseText)
         },
         failFn: function (request) {
             console.log(request)
