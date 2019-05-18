@@ -1,21 +1,41 @@
 !function () {
     window.onload = function () {
-        function writeCode(add_code, speed, callBack) {
+        let duration = 50
+        function writeCode(add_code, callBack) {
             console.log(1)
             let useCss = document.querySelector('.usecss')
             let prevcode = document.querySelector('.prevcodeinner')
             let n = 0
-            let write_timer = setInterval(() => {
+            let write_timer = setTimeout(function timer() {
                 n++
                 useCss.innerHTML += add_code.slice(n - 1, n)
                 prevcode.innerHTML += add_code.slice(n - 1, n)
                 prevcode.scrollTop = prevcode.scrollHeight
-                if (n >= add_code.length) {
-                    clearInterval(write_timer)
+                if (n < add_code.length) {
+                    write_timer = setTimeout(timer,duration)
+                }else{
                     callBack && callBack()
                 }
-            }, speed)
+            }, duration)
         }
+
+        $('.control').on('click', 'button', function (event) {
+            let $btn = $(event.currentTarget)
+            let speed = $btn.attr('data-speed')
+            console.log(speed)
+            $btn.attr('class', 'clicked').siblings().attr('class', 'unclick')
+            switch(speed){
+                case 'slow':
+                duration = 100
+                break
+                case 'normal':
+                duration = 50
+                break
+                case 'fast':
+                duration = 10
+                break
+            }
+        })
 
         writeCode(`
 .nose {
@@ -133,7 +153,10 @@
     bottom: -120px;
     border-radius: 50%/20%;
 }
-        `, 10)
+body{
+    background-color: #fee433;
+}
+        `, duration)
     }
 
 }.call() 

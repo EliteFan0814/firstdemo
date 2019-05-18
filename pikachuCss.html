@@ -7,6 +7,7 @@
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>皮卡丘</title>
   <link rel="stylesheet" href="./css/pikachu.css">
+  <script src="https://cdn.bootcss.com/jquery/1.12.1/jquery.js"></script>
   <script src="./js/pikachu.js"></script>
   <style class="usecss"></style>
 </head>
@@ -29,9 +30,9 @@
     </div>
   </div>
   <div class="control">
-    <button>慢一点</button>
-    <button class="clicked">一 般</button>
-    <button>快一点</button>
+    <button data-speed="slow" class="unclick">慢一点</button>
+    <button data-speed="normal" class="clicked">一 般</button>
+    <button data-speed="fast" class="unclick">快一点</button>
   </div>
 </body>
 

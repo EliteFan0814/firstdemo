@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: all 1s;
 }
 
 *::before {
@@ -19,7 +20,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: #fee433;
 }
 .prevcode{
     width: 100%;
@@ -55,6 +55,13 @@ body {
     padding: 3px 5px;
     margin-bottom: 10px;
 }
+.control button:focus{
+    outline: none;
+}
+.unclick{
+    box-shadow: 2px 2px 2px rgba(75, 75, 75, 0.8);
+}
 .clicked{
-    box-shadow: 2px 2px 2px;
+    box-shadow: 1px 1px 1px rgba(34, 33, 33, 0.8);
+    background: #ccc;
 }
