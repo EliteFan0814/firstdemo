@@ -3,7 +3,6 @@
         let duration = 50
         let isopen = true
         function writeCode(add_code, callBack) {
-            console.log(1)
             let useCss = document.querySelector('.usecss')
             let prevcode = document.querySelector('.prevcodeinner')
             let n = 0
@@ -23,11 +22,9 @@
         function talk(){
             let talkTimer = setInterval(()=>{
                 if(isopen){
-                    // $('.wrapper-lowerlip').attr('style','height:0')
                     $('.wrapper-lowerlip').removeClass('open').addClass('close')
                     isopen = false
                 }else{
-                    // $('.wrapper-lowerlip').attr('style','height:110px')
                     $('.wrapper-lowerlip').removeClass('close').addClass('open')
                     isopen = true
                 }
@@ -158,7 +155,6 @@
 
 .lowerLip::after {
     content: "";
-
     width: 100px;
     height: 200px;
     background: red;

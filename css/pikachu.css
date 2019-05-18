@@ -54,6 +54,7 @@ body {
     border: none;
     padding: 3px 5px;
     margin-bottom: 10px;
+    background: #DDD;
 }
 .control button:focus{
     outline: none;
