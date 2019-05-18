@@ -43,3 +43,18 @@ body {
     height: 165px;
     position: relative;
 }
+.control{
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    display: flex;
+    flex-direction: column;
+}
+.control button{
+    border: none;
+    padding: 3px 5px;
+    margin-bottom: 10px;
+}
+.clicked{
+    box-shadow: 2px 2px 2px;
+}
