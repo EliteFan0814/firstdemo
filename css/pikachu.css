@@ -54,15 +54,15 @@ body {
     border: none;
     padding: 3px 5px;
     margin-bottom: 10px;
-    background: #DDD;
+    background: #eee;
 }
 .control button:focus{
     outline: none;
 }
-.unclick{
+.control button.unclick{
     box-shadow: 2px 2px 2px rgba(75, 75, 75, 0.8);
 }
-.clicked{
+.control button.clicked{
     box-shadow: 1px 1px 1px rgba(34, 33, 33, 0.8);
     background: #ccc;
 }
