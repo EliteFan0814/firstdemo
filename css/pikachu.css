@@ -48,6 +48,7 @@ body {
     right: 3%;
     display: flex;
     flex-direction: column;
+    z-index: 1;
 }
 .control button{
     border: none;
