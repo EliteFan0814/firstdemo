@@ -68,3 +68,9 @@ body {
 .show{
     transition: all 1s;
 }
+.wrapper .open{
+    height: 110px;
+}
+.wrapper .close{
+    height: 0;
+}

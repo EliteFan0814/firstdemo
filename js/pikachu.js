@@ -1,6 +1,7 @@
 !function () {
     window.onload = function () {
         let duration = 50
+        let isopen = true
         function writeCode(add_code, callBack) {
             console.log(1)
             let useCss = document.querySelector('.usecss')
@@ -17,6 +18,20 @@
                     callBack && callBack()
                 }
             }, duration)
+        }
+
+        function talk(){
+            let talkTimer = setInterval(()=>{
+                if(isopen){
+                    // $('.wrapper-lowerlip').attr('style','height:0')
+                    $('.wrapper-lowerlip').removeClass('open').addClass('close')
+                    isopen = false
+                }else{
+                    // $('.wrapper-lowerlip').attr('style','height:110px')
+                    $('.wrapper-lowerlip').removeClass('close').addClass('open')
+                    isopen = true
+                }
+            },1000)
         }
 
         $('.control').on('click', 'button', function (event) {
@@ -155,7 +170,7 @@
 .show{
     background-color: #fee433;
 }
-        `, duration)
+        `, talk)
     }
 
 }.call() 
