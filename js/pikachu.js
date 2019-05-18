@@ -44,7 +44,6 @@
     border-radius: 9px;
     position: absolute;
     left: calc(50% - 11px);
-    /*或 transform: translateX(-50%)*/
     top: 28px;
 }
 
@@ -103,6 +102,7 @@
     position: absolute;
     top: 50px;
     background-color: #fee433;
+    z-index: 1;
 }
 
 .upperLip.left {
@@ -128,7 +128,6 @@
     height: 110px;
     width: 140px;
     overflow: hidden;
-    z-index: -1;
 }
 
 .lowerLip {
@@ -153,7 +152,7 @@
     bottom: -120px;
     border-radius: 50%/20%;
 }
-body{
+.show{
     background-color: #fee433;
 }
         `, duration)
