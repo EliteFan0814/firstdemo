@@ -2,54 +2,10 @@
     window.onload = function () {
         let duration = 50
         let isopen = true
-        function writeCode(add_code, callBack) {
-            let useCss = document.querySelector('.usecss')
-            let prevcode = document.querySelector('.prevcodeinner')
-            let n = 0
-            let write_timer = setTimeout(function timer() {
-                n++
-                useCss.innerHTML += add_code.slice(n - 1, n)
-                prevcode.innerHTML += add_code.slice(n - 1, n)
-                prevcode.scrollTop = prevcode.scrollHeight
-                if (n < add_code.length) {
-                    write_timer = setTimeout(timer,duration)
-                }else{
-                    callBack && callBack()
-                }
-            }, duration)
-        }
-
-        function talk(){
-            let talkTimer = setInterval(()=>{
-                if(isopen){
-                    $('.wrapper-lowerlip').removeClass('open').addClass('close')
-                    isopen = false
-                }else{
-                    $('.wrapper-lowerlip').removeClass('close').addClass('open')
-                    isopen = true
-                }
-            },1000)
-        }
-
-        $('.control').on('click', 'button', function (event) {
-            let $btn = $(event.currentTarget)
-            let speed = $btn.attr('data-speed')
-            console.log(speed)
-            $btn.attr('class', 'clicked').siblings().attr('class', 'unclick')
-            switch(speed){
-                case 'slow':
-                duration = 100
-                break
-                case 'normal':
-                duration = 50
-                break
-                case 'fast':
-                duration = 10
-                break
-            }
-        })
-
-        writeCode(`
+        let useCss = document.querySelector('.usecss')
+        let prevcode = document.querySelector('.prevcodeinner')
+        let write_timer
+        let csscode = `
 .nose {
     border: 11px solid red;
     border-color: black transparent transparent transparent;
@@ -166,7 +122,60 @@
 .show{
     background-color: #fee433;
 }
-        `, talk)
+        `
+        function writeCode(add_code, callBack) {
+            let n = 0
+            write_timer = setTimeout(function timer() {
+                n++
+                useCss.innerHTML += add_code.slice(n - 1, n)
+                prevcode.innerHTML += add_code.slice(n - 1, n)
+                prevcode.scrollTop = prevcode.scrollHeight
+                if (n < add_code.length) {
+                    write_timer = setTimeout(timer,duration)
+                }else{
+                    callBack && callBack()
+                }
+            }, duration)
+        }
+
+        function talk(){
+            let talkTimer = setInterval(()=>{
+                if(isopen){
+                    $('.wrapper-lowerlip').removeClass('open').addClass('close')
+                    isopen = false
+                }else{
+                    $('.wrapper-lowerlip').removeClass('close').addClass('open')
+                    isopen = true
+                }
+            },1000)
+        }
+
+        $('.control').on('click', 'button', function (event) {
+            let $btn = $(event.currentTarget)
+            let speed = $btn.attr('data-speed')
+            console.log(speed)
+            $btn.attr('class', 'clicked').siblings().attr('class', 'unclick')
+            switch(speed){
+                case 'slow':
+                duration = 100
+                break
+                case 'normal':
+                duration = 50
+                break
+                case 'fast':
+                duration = 10
+                break
+                case 'end':
+                clearInterval(write_timer)
+                useCss.innerHTML = csscode
+                prevcode.innerHTML = csscode
+                prevcode.scrollTop = prevcode.scrollHeight
+                talk()
+                break
+            }
+        })
+
+        writeCode(csscode, talk)
     }
 
 }.call() 
