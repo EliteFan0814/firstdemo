@@ -5,72 +5,77 @@
         let useCss = document.querySelector('.usecss')
         let prevcode = document.querySelector('.prevcodeinner')
         let write_timer
+        let talkTimer
         let csscode = `
+/*你好，我是巨侦探：毛顺沟。
+  前两天破坏你惊喜的那个叫 [皮卡丘] ，
+  不是我，我和他没关系，这个锅我可不背！
+  今天就让你看看我真正的样子！
+*/
+
+/*这是我的鼻子，比德芙嗅觉都好！*/
 .nose {
     border: 11px solid red;
     border-color: black transparent transparent transparent;
     border-radius: 9px;
-    position: absolute;
     left: calc(50% - 11px);
     top: 28px;
 }
 
+/*这是我的眼睛，比德芙眼睛都大！*/
 .eye {
+    background-color: #2e2e2e;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #2e2e2e;
-    position: absolute;
     border: 2px solid black;
 }
 
+/*看我的眼睛，比德芙的眼睛都亮！*/
 .eye::before {
-    content: "";
-    display: block;
+    background-color: #fff;
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background-color: #ddd;
-    position: absolute;
     left: 5px;
     top: 1px;
     border: 1px solid #000;
 }
 
+/*我的眼睛很好看吧，是不是比德芙的都好看？*/
 .eye.left {
-    left: calc(50% - 25px - 90px)
+    left: calc(50% - 25px - 90px);
 }
 
 .eye.right {
     right: calc(50% - 25px - 90px);
 }
 
+/*看，我还有腮红呢！德芙就没有！*/
 .blusher {
+    background-color: #fc0d1c;
     width: 68px;
     height: 68px;
-    background-color: #fc0d1c;
     border-radius: 50%;
     border: 2px solid #000;
-    position: absolute;
     top: 70px;
 }
 
 .blusher.left {
-    left: calc(50% - 34px - 140px)
+    left: calc(50% - 34px - 140px);
 }
 
 .blusher.right {
-    right: calc(50% - 34px - 140px)
+    right: calc(50% - 34px - 140px);
 }
 
+/*看我迷人的上嘴唇，德芙有吗？没有！！！*/
 .upperLip {
+    background-color: #fee433;
     width: 80px;
     height: 20px;
     border: 2px solid black;
-    position: absolute;
     top: 50px;
-    background-color: #fee433;
-    z-index: 1;
 }
 
 .upperLip.left {
@@ -78,7 +83,7 @@
     border-top: none;
     border-right: none;
     left: calc(50% - 80px);
-    transform: rotate(-15deg)
+    transform: rotate(-15deg);
 }
 
 .upperLip.right {
@@ -89,41 +94,78 @@
     transform: rotate(15deg);
 }
 
-.wrapper-lowerlip {
-    position: absolute;
-    bottom: 0;
-    left: calc(50% - 70px);
-    height: 110px;
-    width: 140px;
-    overflow: hidden;
-}
-
+/*还有我可爱的嘴巴，德芙有我的可爱吗？没有！！！*/
 .lowerLip {
+    background: #990513;
     width: 140px;
     height: 600px;
     border: 2px solid #000;
-    background: #990513;
     border-radius: 50%;
-    position: absolute;
     bottom: 0;
-    overflow: hidden;
 }
 
 .lowerLip::after {
-    content: "";
+    bottom: -120px;
+    background: red;
     width: 100px;
     height: 200px;
-    background: red;
-    position: absolute;
     left: calc(50% - 50px);
-    bottom: -120px;
     border-radius: 50%/20%;
 }
-.show{
-    background-color: #fee433;
-}
-        `
-        function writeCode(add_code, callBack) {
+
+/*好啦，这就是我啦，是不是很好看，很可爱？
+  今天怎么这么冷啊！
+  糟糕，秀过头了，
+  把皮给忘家啦~~~
+  稍~~~~
+  等~~~~
+*/
+.show{background-color:#fee433;}
+
+`
+        let csscode2 = `
+/*这才是我完全体，
+我的皮可是是没有[毛]的呦，不信你摸。
+好了，我秀完了，
+允许免费你再看几秒，
+        3
+        2
+        1
+我走啦，拜拜！
+*/
+.wrapper{display:none;}
+/*糟糕，皮又落下了*/
+.show{background:#fff;}
+       
+    
+   
+  你怎么还不走？
+       
+    
+   
+  快走啦，这里没东西啦！
+       
+    
+   
+  你是要跟我耗下去吗？
+       
+    
+   
+  看你这么执着
+  *就再送你 个惊喜吧*
+      屏住呼吸 
+         3  
+         2 
+         1
+*/
+`
+    let lovetext = `
+      
+    `
+        clickControl()
+        writeCode(csscode, talk, function () { writeCode(csscode2, function () { showHeart() }) })
+
+        function writeCode(add_code, callBack, callBack2) {
             let n = 0
             write_timer = setTimeout(function timer() {
                 n++
@@ -131,51 +173,74 @@
                 prevcode.innerHTML += add_code.slice(n - 1, n)
                 prevcode.scrollTop = prevcode.scrollHeight
                 if (n < add_code.length) {
-                    write_timer = setTimeout(timer,duration)
-                }else{
+                    write_timer = setTimeout(timer, duration)
+                } else {
                     callBack && callBack()
+                    callBack2 && callBack2()
                 }
             }, duration)
         }
 
-        function talk(){
-            let talkTimer = setInterval(()=>{
-                if(isopen){
+        function talk(callBack) {
+            window.clearInterval(talkTimer)
+            talkTimer = setInterval(() => {
+                if (isopen) {
                     $('.wrapper-lowerlip').removeClass('open').addClass('close')
                     isopen = false
-                }else{
+                } else {
                     $('.wrapper-lowerlip').removeClass('close').addClass('open')
                     isopen = true
                 }
-            },1000)
+            }, 500)
+            callBack && callBack()
         }
 
-        $('.control').on('click', 'button', function (event) {
-            let $btn = $(event.currentTarget)
-            let speed = $btn.attr('data-speed')
-            console.log(speed)
-            $btn.attr('class', 'clicked').siblings().attr('class', 'unclick')
-            switch(speed){
-                case 'slow':
-                duration = 100
-                break
-                case 'normal':
-                duration = 50
-                break
-                case 'fast':
-                duration = 10
-                break
-                case 'end':
-                clearInterval(write_timer)
-                useCss.innerHTML = csscode
-                prevcode.innerHTML = csscode
-                prevcode.scrollTop = prevcode.scrollHeight
-                talk()
-                break
-            }
-        })
+        function showHeart() {
+            $('.rectangle .rectange-wrapper div>div>div').each(function () {
+                $(this).css({
+                    // position: 'relative',
+                    // top: '-200px',
+                    width: '0px',
+                    height: '0px',
+                    opacity: 0
+                });
+                var wait = Math.floor((Math.random() * 3000) + 1);
+                $(this).delay(wait).animate({
+                    // top: '0px',
+                    width: '30px',
+                    height: '30px',
+                    opacity: 1
+                }, 1000);
+            })
+        }
 
-        writeCode(csscode, talk)
+        function clickControl() {
+            $('.control').on('click', 'button', function (event) {
+                let $btn = $(event.currentTarget)
+                let speed = $btn.attr('data-speed')
+                console.log(speed)
+                $btn.attr('class', 'clicked').siblings().attr('class', 'unclick')
+                switch (speed) {
+                    case 'slow':
+                        duration = 100
+                        break
+                    case 'normal':
+                        duration = 50
+                        break
+                    case 'fast':
+                        duration = 10
+                        break
+                    case 'end':
+                        clearInterval(write_timer)
+                        useCss.innerHTML = csscode
+                        prevcode.innerHTML = csscode
+                        prevcode.scrollTop = prevcode.scrollHeight
+                        talk()
+                        writeCode(csscode2, function () { showHeart() })
+                        break
+                }
+            })
+        }
     }
 
 }.call() 

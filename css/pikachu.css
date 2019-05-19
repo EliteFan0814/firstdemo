@@ -20,29 +20,36 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-.prevcode{
+
+.prevcode {
     width: 100%;
     height: 45%;
     padding: 5px 10px;
     background: #fff;
     font-size: 14px;
 }
-.prevcodeinner{
+
+.prevcodeinner {
     height: 100%;
     overflow: hidden;
+    font-family: 'Microsoft Yahei';
 }
-.show{
+
+.show {
     width: 100%;
     height: 55%;
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
 }
-.wrapper {  
+
+.wrapper {
     height: 165px;
+    overflow: hidden;
     position: relative;
+    margin-top: 30px;
 }
-.control{
+
+.control {
     position: absolute;
     top: 2%;
     right: 3%;
@@ -50,34 +57,133 @@ body {
     flex-direction: column;
     z-index: 1;
 }
-.control button{
+
+.control button {
     border: none;
     padding: 3px 5px;
     margin-bottom: 10px;
     background: #eee;
 }
-.control button:focus{
+
+.control button:focus {
     outline: none;
 }
-.control button.unclick{
+
+.control button.unclick {
     box-shadow: 2px 2px 2px rgba(75, 75, 75, 0.8);
 }
-.control button.clicked{
+
+.control button.clicked {
     box-shadow: 1px 1px 1px rgba(34, 33, 33, 0.8);
     background: #ccc;
 }
-.show{
+
+.show {
     transition: all 1s;
 }
-.wrapper .open{
+
+
+.nose {
+    position: absolute;
+}
+
+.eye {
+    position: absolute;
+}
+
+.eye::before {
+    content: "";
+    display: block;
+    position: absolute;
+}
+
+.blusher {
+    position: absolute;
+}
+
+.upperLip {
+    position: absolute;
+    z-index: 1;
+}
+
+.lowerLip {
+    position: absolute;
+    overflow: hidden;
+}
+
+.lowerLip::after {
+    position: absolute;
+    content: "";
+}
+
+
+
+.wrapper .open {
     height: 110px;
 }
-.wrapper .close{
+
+.wrapper .close {
     height: 0;
 }
-.mytext{
+
+.wrapper-lowerlip {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 70px);
+    height: 110px;
+    width: 140px;
+    overflow: hidden;
+}
+
+.mytext {
+    display: none;
     margin-top: 10px;
     border: 1px solid red;
-    font-size: 1.2em;
+    font-size: 2.1em;
     text-align: center;
+    position: relative;
+    top: 63px;
+}
+
+.mytext .love {
+    line-height: 1em;
+}
+
+.rectangle {
+    width: 350px;
+    height: 280px;
+    position: absolute;
+    left: calc(50% - 175px);
+    text-align: center;
+}
+
+.rectangle .rectange-wrapper {
+    margin-top: 5px;
+}
+
+.rectangle .rectange-wrapper .left,
+.rectangle .rectange-wrapper .right {
+    display: inline-block;
+}
+
+.rectangle .rectange-wrapper .left {
+    width: 170px;
+    height: 239px;
+    margin-right: -4px;
+}
+
+.rectangle .rectange-wrapper div>div {
+    display: block;
+    height: 34px;
+}
+
+.rectangle .rectange-wrapper div>div>div {
+    display: inline-block;
+    float: right;
+    margin: 2px;
+    background-color: red;
+}
+
+.rectangle .rectange-wrapper div.right>div>div {
+    float: left;
 }
