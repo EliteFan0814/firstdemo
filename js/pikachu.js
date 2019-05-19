@@ -152,7 +152,7 @@
     
    
   看你这么执着
-  *就再送你 个惊喜吧*
+  *就再送你个惊喜吧*
       屏住呼吸 
          3  
          2 
@@ -160,7 +160,10 @@
 */
 `
     let lovetext = `
-      
+/*谢谢有你陪在我身边，
+  今天是 520 的日子，
+  我给你一个代码狗的罗曼蒂克。
+*/
     `
         clickControl()
         writeCode(csscode, talk, function () { writeCode(csscode2, function () { showHeart() }) })
@@ -212,6 +215,11 @@
                     opacity: 1
                 }, 1000);
             })
+            setTimeout(function(){writeCode(lovetext,showText)},5000)
+        }
+
+        function showText(){
+            $('.mytext').attr('style','color:#000;')
         }
 
         function clickControl() {
@@ -231,6 +239,7 @@
                         duration = 10
                         break
                     case 'end':
+                        $btn.prop('disabled',true)
                         clearInterval(write_timer)
                         useCss.innerHTML = csscode
                         prevcode.innerHTML = csscode
