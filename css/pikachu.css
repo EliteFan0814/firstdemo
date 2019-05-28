@@ -14,7 +14,6 @@
 
 body {
     height: 100vh;
-    border: 1px solid;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -136,13 +135,15 @@ body {
 }
 
 .mytext {
+    display: none;
     color: transparent;
     margin-top: 10px;
     font-size: 2.1em;
     text-align: center;
     position: relative;
-    top: 62px;
+    top: 63px;
     transition: all 2.5s;
+    
 }
 
 .mytext .love {
